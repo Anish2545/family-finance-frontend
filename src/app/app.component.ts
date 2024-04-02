@@ -14,6 +14,6 @@ export class AppComponent {
       if (splash) {
         splash.style.display = 'none';
       }
-    }, 3000000);
+    }, 3000);
   }
 }
