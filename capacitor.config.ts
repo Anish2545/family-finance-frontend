@@ -3,9 +3,12 @@ import { CapacitorConfig } from '@capacitor/cli';
 const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
   appName: 'Frontend',
+  bundledWebRuntime: false,
   webDir: 'www',
-  server: {
-    androidScheme: 'https'
+  plugins: {
+    SplashScreen: {
+      launchShowDuration: 3000
+    }
   }
 };
 
