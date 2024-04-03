@@ -6,7 +6,15 @@ import { StartPage } from './start.page';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./carousel/carousel.module').then( m => m.CarouselPageModule)
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./signin/signin.module').then( m => m.SigninPageModule)
   }
 ];
 
