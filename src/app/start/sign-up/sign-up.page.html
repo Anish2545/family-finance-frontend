@@ -1,0 +1,78 @@
+<ion-content [fullscreen]="true">
+  <div class="ion-text-center heading">
+      <ion-label >Family Finance</ion-label>
+    </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-row>
+    <ion-list background="transparent" lines="full">
+      <ion-list-header class="ion-margin">
+        <ion-label>Sign UP</ion-label>
+      </ion-list-header>
+      <ion-item-group class="ion-margin-horizontal ion-margin-bottom">
+        <form [formGroup]="form">
+        <div class="ion-margin-vertical">
+        <ion-item >
+          <ion-input  formControlName="name" label="Full Name" label-placement="floating" fill="outline" placeholder="Full Name" type="text"></ion-input>
+        </ion-item>
+        <ion-text *ngIf="!form.get('name')?.valid && form.get('name')?.touched">
+          <ion-text class="error" 
+            *ngIf="form.get('name')?.hasError('required')" 
+            color="danger">
+            * Please enter your Name
+          </ion-text>
+        </ion-text>
+      </div>
+
+      <div class="ion-margin-vertical">
+        <ion-item>
+          <ion-input formControlName="phone" label="Mobile No" label-placement="floating" fill="outline" placeholder="Mobile No" type="tel" minlength="10" maxlength="10"></ion-input>
+        </ion-item>
+        <ion-text *ngIf="!form.get('phone')?.valid && form.get('phone')?.touched">
+          <ion-text class="error" *ngIf="form.get('phone')?.hasError('required')" color="danger">
+            * Please enter the Mobile Number
+          </ion-text>
+          <ion-text class="error" *ngIf="form.get('phone')?.hasError('minlength') 
+            && !form.get('phone')?.hasError('required')" color="danger">
+            * Please enter a valid Mobile Number
+          </ion-text>
+        </ion-text>
+      </div>
+
+      <div class="ion-margin-vertical">
+        <ion-item>
+          <ion-input formControlName="email" label="Email ID" label-placement="floating" fill="outline" placeholder="Email ID" type="email" ></ion-input>
+        </ion-item>
+        <ion-text *ngIf="!form.get('email')?.valid && form.get('email')?.touched">
+          <ion-text class="error" 
+            *ngIf="form.get('email')?.hasError('required')" 
+            color="danger">
+            * Please enter your Email Address
+          </ion-text>
+          <ion-text class="error" *ngIf="form.get('email')?.hasError('email') 
+            && !form.get('email')?.hasError('required')" color="danger">
+            * Please enter a proper Email Address
+          </ion-text>
+        </ion-text>
+
+
+      </div>
+      </form>
+      <ion-item lines="none" class="ion-padding-top">
+        <ion-text color="danger" slot="start">
+          Already have an account?
+        </ion-text>
+        <ion-text color="dark" slot="end" 
+          routerLink="/sign-in">
+          <strong>Sign In</strong>
+        </ion-text>
+      </ion-item>
+      <ion-item lines="none" class="ion-padding-top">
+      <div class="buttons">
+        <ion-button shape="round" expand="block" class="button" routerLink="/signin">Let's Get Started Here</ion-button>
+      </div>
+      </ion-item>
+      </ion-item-group>
+    </ion-list>
+  </ion-row>
+</ion-footer>

@@ -5,7 +5,8 @@ const routes: Routes = [
    {
     path: '',
     loadChildren: () => import('./start/start.module').then(m => m.StartPageModule)
-  }
+  },
+
   
 ];
 @NgModule({

@@ -1,3 +1,16 @@
+// .heading {
+//   margin-top: 10vh;
+//   font-size: 25px;
+//   font-weight:bolder; /* Adjust the value as needed */
+// }
+// ion-footer {
+//   ion-row {
+//       padding-top: 5vh;
+//       background: transparent;
+//       display: block;
+//   }
+// }
+
 .custom-background {
   position: absolute;
   width: 428px;
@@ -31,12 +44,14 @@
 .inputs-container {
   display: flex;
   flex-direction: column;
+  
   align-items: center; /* Center align horizontally */
   justify-content: center; /* Center align vertically */
   margin-top: 20px; /* Adjust margin top as needed */
 }
 
 ion-input {
+  padding-bottom: 20px;
   ion-input {
     --border-color: #000000; /* Add black border to ion-input */
     --border-radius: 10px; /* Apply border-radius to ion-input */
