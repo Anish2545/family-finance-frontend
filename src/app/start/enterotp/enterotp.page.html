@@ -1,0 +1,19 @@
+
+<ion-content class="ion-padding" [fullscreen]="true">
+  <div class="container">
+    <!-- Image -->
+    <img src="assets\enterotp.png" alt="Image" class="center-image">
+
+    <!-- Text below Textbox -->
+    <div class="text-below-input">
+      <p class="text-bold-italic">Enter the OTP code</p>
+      <p class="text-regular">Enter the code sent on your mobile number</p>
+    </div>
+
+    <!-- OTP Input using ng-otp-input -->
+    <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:4}"></ng-otp-input>
+
+    <!-- Button -->
+    <ion-button expand="block" style="margin-top: 20px; width: 350px; height: 59px; --background: #7ED957; --border-radius: 50px;">Verify</ion-button>
+  </div>
+</ion-content>
