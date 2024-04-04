@@ -4,6 +4,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { StartPage } from './start.page';
 
 const routes: Routes = [
+      {
+    path: '',
+    loadChildren: () => import('./enterotp/enterotp.module').then( m => m.EnterotpPageModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./signin/signin.module').then( m => m.SigninPageModule)
+  },
+
+  
   {
     path: '',
     loadChildren: () => import('./carousel/carousel.module').then( m => m.CarouselPageModule)
@@ -11,11 +21,10 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },
-  {
-    path: 'sigin',
-    loadChildren: () => import('./signin/signin.module').then( m => m.SigninPageModule)
   }
+ 
+ 
+
 ];
 
 @NgModule({
