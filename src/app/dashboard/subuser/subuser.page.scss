@@ -1,0 +1,27 @@
+ion-content {
+  background-color: #ffffff;
+  padding-bottom: 20px; /* Add padding to create space between the image and the footer */
+}
+
+.heading {
+  font-size: 32px;
+  font-weight: bolder;
+  margin-top: 10vh;
+}
+
+ion-footer {
+  ion-row.footer-row {
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+  }
+}
+
+ion-item {
+  --ion-background-color: transparent !important;
+}
+
+.log-in {
+  font-size: 16px;
+  padding-left: 5%;
+  color: #7ed957;
+}
