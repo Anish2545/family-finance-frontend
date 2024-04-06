@@ -10,15 +10,27 @@
     <!-- Image -->
     <img src="/assets/mobile.svg" alt="Your Image" style="width: 400px; height: 400px; margin-bottom: 20px;">
 
-
+    <ion-item-group class="ion-margin-horizontal ion-margin-bottom">
+    <form [formGroup]="form">
     <!-- Inputs -->
-    <div class="inputs-container">
-      <ion-input label="Mobile No." label-placement="floating" fill="outline" placeholder="Enter text" style="width: 350px; height: 91px; border: 1px solid; border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px #000000"></ion-input>
+    <div class="ion-margin-vertical" style="width: 100%;">
+      <ion-item lines="none"> <!-- Set lines to none to remove default item lines -->
+        <ion-input formControlName="phone" label="Mobile No" label-placement="floating" fill="outline" placeholder="Mobile No" type="tel" minlength="10" maxlength="10" style="min-width: 100%;width: 100%;"></ion-input>
+      </ion-item>
+      <ion-text *ngIf="!form.get('phone')?.valid && form.get('phone')?.touched">
+        <ion-text class="error" *ngIf="form.get('phone')?.hasError('required')" color="danger">
+          * Please enter the Mobile Number
+        </ion-text>
+        <ion-text class="error" *ngIf="form.get('phone')?.hasError('minlength') && !form.get('phone')?.hasError('required')" color="danger">
+          * Please enter a valid Mobile Number
+        </ion-text>
+      </ion-text>
     </div>
+    </form>
+    </ion-item-group>
 
+
+    <div>
     <!-- Button -->
     <ion-button expand="block" style="margin-top: 20px; width: 350px; height: 59px; --background: #7ED957; --border-radius: 50px;">SEND OTP</ion-button>
   </div>
