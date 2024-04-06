@@ -14,6 +14,9 @@
     <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:4}"></ng-otp-input>
 
     <!-- Button -->
-    <ion-button expand="block" style="margin-top: 20px; width: 350px; height: 59px; --background: #7ED957; --border-radius: 50px;">Verify</ion-button>
+    <div style="display: flex; justify-content: center;">
+      <ion-button expand="block" style="margin-top: 20px; max-width: 350px; height: 59px; --background: #7ED957; --border-radius: 50px;" routerLink="/otp-verify">Verify</ion-button>
+    </div>
+    
   </div>
 </ion-content>

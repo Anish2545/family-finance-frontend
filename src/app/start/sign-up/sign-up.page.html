@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-  <div class="ion-text-center heading">
+  <div class="ion-text-center heading" style="color: #959595" >
       <ion-label >Family Finance</ion-label>
     </div>
 </ion-content>
@@ -58,18 +58,18 @@
 
       </div>
       </form>
-      <ion-item lines="none" class="ion-padding-top">
-        <ion-text color="danger" slot="start">
+      <ion-item lines="none" class="ion-padding-top ion-text-center">
+        <ion-text color="black" fontsize="20">
           Already have an account?
         </ion-text>
-        <ion-text color="dark" slot="end" 
-          routerLink="/sign-in">
-          <strong>Sign In</strong>
+        <ion-text class="log-in" 
+          routerLink="/login">
+          <strong>Log In</strong>
         </ion-text>
       </ion-item>
       <ion-item lines="none" class="ion-padding-top">
       <div class="buttons">
-        <ion-button shape="round" expand="block" class="button" routerLink="/signin">Let's Get Started Here</ion-button>
+        <ion-button shape="round" expand="block" class="button" routerLink="/enter-otp">Verify OTP</ion-button>
       </div>
       </ion-item>
       </ion-item-group>
