@@ -11,7 +11,8 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardPage
-  },  {
+  },
+  {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   },
