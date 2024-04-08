@@ -11,7 +11,15 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardPage
+  },  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   },
+  {
+    path: 'split-travel',
+    loadChildren: () => import('./split-travel/split-travel.module').then( m => m.SplitTravelPageModule)
+  },
+
 
 ];
 
