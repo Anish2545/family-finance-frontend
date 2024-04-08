@@ -10,10 +10,10 @@ export class SplitTravelPage implements OnInit {
   form:FormGroup;
   constructor(private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
-      destination: ['', Validators.required],
-      noOfPersons: [0, Validators.required],
-      personname: ['',Validators.required],
-      travelexpense: [0,Validators.required],
+      destination: [null, Validators.required],
+      noOfPersons: [null, Validators.required],
+      personname: [null,Validators.required],
+      travelexpense: [null,Validators.required],
     });
    }
 
