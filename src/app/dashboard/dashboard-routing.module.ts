@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardPage } from './dashboard.page';
 
 const routes: Routes = [
+
   {
     path: 'dashboard',
     component: DashboardPage,
@@ -31,6 +32,7 @@ const routes: Routes = [
       }
     ]
   },
+  
 ];
 
 @NgModule({

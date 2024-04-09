@@ -26,9 +26,16 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
+    path: 'otpverify1',
+    loadChildren: () => import('./otpverify1/otpverify1.module').then( m => m.Otpverify1PageModule)
+  },
+
+  {
     path: 'new',
     loadChildren: () => import('./new/new.module').then( m => m.NewPageModule)
   },
+
+
 
 
 
