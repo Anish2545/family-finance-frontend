@@ -1,0 +1,33 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="light" class="ion-padding-vertical">
+    <ion-title mode="md">Dashboard</ion-title>
+
+    <ion-buttons slot="end" style="display: flex; align-items: center;">
+      <ion-button>
+        <ion-thumbnail class="notification">
+          <ion-icon name="notifications-circle-outline"></ion-icon>
+        </ion-thumbnail>
+      </ion-button>
+
+      <div style="width: 15px;"></div> 
+
+      <ion-button routerLink="/dashboard/profile">
+        <ion-thumbnail class="profile">
+          <ion-icon name="person-circle-sharp"></ion-icon>
+        </ion-thumbnail>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row size="3">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Card Title</ion-card-title>
+        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content> Card Content </ion-card-content>
+    </ion-card>
+  </ion-row>
+</ion-content>
