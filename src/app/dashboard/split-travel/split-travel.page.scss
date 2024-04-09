@@ -1,31 +1,12 @@
-  ion-content.no-scroll::-webkit-scrollbar {
-    display: none;
-  }
 ion-content {
     background-color: #ffffff;
-    .heading {
-        position: relative;
-        font-size: 32px;
-        font-weight: bolder;
-        margin-top: 5vh;
-        color: #959595;
-    }
-    img{
-        margin-top: 0.5vh;
-    }
-    .heading img {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: auto;
-      }
-      .profile-header {
-        margin-top: 0px; /* Adjust this value as needed */
-      }
 }
 
-
+.heading {
+    font-size: 32px;
+    font-weight: bolder;
+    margin-top: 10vh;
+}
 
 ion-footer ion-row {
     background: transparent;

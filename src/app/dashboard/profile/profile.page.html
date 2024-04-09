@@ -1,13 +1,15 @@
-<ion-content [fullscreen]="true" class="ion-text-center">
-  <div class="heading">
-    <img src="assets/FamilyFinance.png" alt="Family Finance Image" style="width: 100%; height: auto;">
-    <h1 class="profile-header">Family Finance</h1>
+<ion-content [fullscreen]="true">
+  <div class="ion-text-center heading">
+    <img src="assets\abstract-user-flat-4.svg" alt="Family Finance Image" style="width: 75px; height: 93px;">
+    <h1 class="profile-header">PROFILE</h1>
   </div>
 </ion-content>
 <ion-footer class="ion-no-border">
-  <ion-row class="ion-justify-content-center">
+  <ion-row>
     <ion-list background="transparent" lines="full">
-      
+      <ion-list-header class="ion-margin">
+        <ion-label>Sign UP</ion-label>
+      </ion-list-header>
       <ion-item-group class="ion-margin-horizontal ion-margin-bottom">
         <form [formGroup]="form">
           <div class="ion-margin-vertical">
@@ -16,14 +18,14 @@
             </ion-item>
             <ion-text *ngIf="!form.get('name')?.valid && form.get('name')?.touched">
               <ion-text class="error" *ngIf="form.get('name')?.hasError('required')" color="danger">
-                * Please enter Full Name
+                * Please enter your Name
               </ion-text>
             </ion-text>
           </div>
 
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="phone" label="Mobile No" label-placement="floating" fill="outline" placeholder="Mobile No" type="tel" minlength="10" maxlength="10" ></ion-input>
+              <ion-input formControlName="phone" label="Mobile No" label-placement="floating" fill="outline" placeholder="Mobile No" type="tel" minlength="10" maxlength="10"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('phone')?.valid && form.get('phone')?.touched">
               <ion-text class="error" *ngIf="form.get('phone')?.hasError('required')" color="danger">
@@ -33,6 +35,24 @@
                 * Please enter a valid Mobile Number
               </ion-text>
             </ion-text>
+          </div>
+
+          <div class="ion-margin-vertical">
+            <ion-item>
+              <ion-input formControlName="profession" label="Professional/Occupation" label-placement="floating" fill="outline" placeholder="Professional/Occupation" type="text"></ion-input>
+            </ion-item>
+            <!-- Add validation if needed -->
+          </div>
+
+          <div class="ion-margin-vertical">
+            <ion-item>
+              <ion-select formControlName="gender" label="Gender" placeholder="Select Gender">
+                <ion-select-option value="male">Male</ion-select-option>
+                <ion-select-option value="female">Female</ion-select-option>
+                <ion-select-option value="other">Other</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <!-- Add validation if needed -->
           </div>
 
           <div class="ion-margin-vertical">
@@ -49,20 +69,17 @@
             </ion-text>
           </div>
 
-          <div class="ion-margin-vertical">
-            <ion-item>
-              <ion-text color="black" fontsize="20">
-                Already have an account?
-              </ion-text>
-              <ion-text class="log-in" routerLink="/login">
-                <strong>Log In</strong>
-              </ion-text>
-            </ion-item>
-          </div>
-          
-          <ion-item lines="none" class="ion-padding-top ion-no-border">
+          <!-- Verify OTP Button -->
+          <ion-item lines="none" class="ion-padding-top">
             <div style="display: flex; justify-content: center; width: 100%;">
-              <ion-button shape="round" expand="block" class="button" (click)="signUp()">Verify OTP</ion-button>
+              <ion-button shape="round" expand="block" class="button" routerLink="/enter-otp">SAVE</ion-button>
+            </div>
+          </ion-item>
+
+          <!-- Logout Button -->
+          <ion-item lines="none" class="ion-padding-top">
+            <div style="display: flex; justify-content: center; width: 100%;">
+              <ion-button shape="round" expand="block" class="button" (click)="logout()">LOGOUT</ion-button>
             </div>
           </ion-item>
         </form>
@@ -70,4 +87,3 @@
     </ion-list>
   </ion-row>
 </ion-footer>
-

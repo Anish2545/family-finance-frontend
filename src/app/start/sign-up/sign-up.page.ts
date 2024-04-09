@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl,FormGroup,Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,33 +9,29 @@ import { FormControl,FormGroup,Validators } from '@angular/forms';
 })
 export class SignUpPage implements OnInit {
   form!: FormGroup;
-  type:boolean=true;
+  type: boolean = true;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
-    this.form=new FormGroup({
-      name: new FormControl(null, {
-        validators: [Validators.required]
-      }),
-      phone: new FormControl(null, {
-        validators: [Validators.required, Validators.minLength(10), Validators.maxLength(10)]
-      }),
-      email: new FormControl(null, {
-        validators: [Validators.required, Validators.email]
-      }),
-    })
+    this.form = this.formBuilder.group({
+      name: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      email: ['', [Validators.required, Validators.email]],
+    });
   }
+
   changeType() {
     this.type = !this.type;
   }
 
   signUp() {
-    if(!this.form.valid) {
+    if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
     }
+    
+     this.router.navigate(['/enter-otp']);
     console.log(this.form.value);
   }
-
 }
