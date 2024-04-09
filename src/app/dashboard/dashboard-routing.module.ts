@@ -27,11 +27,7 @@ const routes: Routes = [
       }
     ]
   },
-  {
-    path: '',
-    redirectTo: '/dashboard/profile',
-    pathMatch: 'full'
-  }
+  
 ];
 
 @NgModule({
