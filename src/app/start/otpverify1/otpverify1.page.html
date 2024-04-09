@@ -2,7 +2,7 @@
 <ion-content class="ion-padding" [fullscreen]="true">
   <div class="container" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
     <!-- OTP Verified Section -->
-    <div style="position: relative; display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
+    <div style="position: relative; display: flex; flex-direction: column; align-items: center;">
       <!-- Icon -->
       <i class="fa fa-check-square" style="font-size: 78px; color: #7ED957; margin-top: 20px;"></i>
       <!-- Text -->
@@ -17,12 +17,16 @@
     <!-- Hello Users Component -->
     <div style="display: flex; flex-direction: column; align-items: center;">
       <!-- Hello Users Text -->
-      <h2 class="heading" style="color: #000000; font-size: 24px; font-weight: bold; font-style: italic; font-family: Ubuntu; margin-bottom: 10px;">
-        You have been registered succesfully!!
+      <h2 class="heading" style="color: #000000; font-size: 24px; font-weight: bold; font-style: italic; font-family: Ubuntu; margin-center: 10px; text-align: center;">
+        You have been registered successfully!!
       </h2>
 
       <!-- Continue Button -->
       <ion-button expand="block" style="width: 350px; height: 59px; --background: #7ED957; --border-radius: 50px;">CONTINUE</ion-button>
     </div>
+
+    <!-- Bottom Image -->
+    <img src="/assets/otpimg.png" alt="Bottom Image" style="width: 100%; height: auto; position: absolute; bottom: 0; left: 0; right: 0;">
   </div>
 </ion-content>
+
