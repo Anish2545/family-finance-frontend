@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardPage } from './dashboard.page';
 
 const routes: Routes = [
+
   {
     path: 'subuser',
     loadChildren: () => import('./subuser/subuser.module').then( m => m.SubuserPageModule)
@@ -12,6 +13,8 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardPage
   },
+
+
 
 ];
 
