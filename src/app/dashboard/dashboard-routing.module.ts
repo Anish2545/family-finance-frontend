@@ -27,7 +27,11 @@ const routes: Routes = [
         pathMatch: 'full'
       }
     ]
+  },  {
+    path: 'dummy',
+    loadChildren: () => import('./dummy/dummy.module').then( m => m.DummyPageModule)
   },
+
   
 ];
 
