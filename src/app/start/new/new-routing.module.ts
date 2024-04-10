@@ -8,11 +8,6 @@ const routes: Routes = [
     path: '',
     component: NewPage,
     children:[
-      {
-        path: 'home',
-        loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-      }
-
     ]
   },
 
