@@ -25,6 +25,8 @@ export class LoginPage implements OnInit {
   labelMobileNo: string = '';
   preFixMobileNo: string = '';
   confirmationResult: any;
+  reCaptchaVerifier: any;
+  recaptchaVerifier:any;
   isOTPVerficiation: boolean = false;
   isLoginBtnLoading: boolean = false;
   redirectInfoData: any;
