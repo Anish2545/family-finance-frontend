@@ -25,13 +25,14 @@ export class SignUpPage implements OnInit {
     this.type = !this.type;
   }
 
+
   signUp() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
     }
     
-     this.router.navigate(['/enter-otp']);
+     this.router.navigate(['/login']);
     console.log(this.form.value);
   }
 }

@@ -10,6 +10,10 @@ const routes: Routes = [
     component: DashboardPage,
     children: [
       {
+        path: 'home',
+        loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+      },
+      {
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
       },
@@ -23,7 +27,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/dashboard/profile',
+        redirectTo: '/dashboard/home',
         pathMatch: 'full'
       }
     ]

@@ -12,7 +12,7 @@
         <form [formGroup]="form">
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="destination" label="Destination" label-placement="floating" fill="outline" placeholder="Destination" type="text"></ion-input>
+              <ion-input formControlName="destination" label="Destination" label-placement="floating" fill="solid" placeholder="Destination" type="text"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('destination')?.valid && form.get('destination')?.touched">
               <ion-text class="error" *ngIf="form.get('destination')?.hasError('required')" color="danger">
@@ -23,7 +23,7 @@
 
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="noOfPersons" label="No. Of Persons" label-placement="floating" fill="outline" placeholder="No of Persons" type="Number" ></ion-input>
+              <ion-input formControlName="noOfPersons" label="No. Of Persons" label-placement="floating" fill="solid" placeholder="No of Persons" type="Number" ></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('noOfPersons')?.valid && form.get('noOfPersons')?.touched">
               <ion-text class="error" *ngIf="form.get('noOfPersons')?.hasError('required')" color="danger">
@@ -34,7 +34,7 @@
 
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="personname" label="Person Name" label-placement="floating" fill="outline" placeholder="Person Name" type="text"></ion-input>
+              <ion-input formControlName="personname" label="Person Name" label-placement="floating" fill="solid" placeholder="Person Name" type="text"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('personname')?.valid && form.get('personname')?.touched">
               <ion-text class="error" *ngIf="form.get('personname')?.hasError('required')" color="danger">
@@ -46,7 +46,7 @@
 
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="travelexpense" label="Travel Expense" label-placement="floating" fill="outline" placeholder="Travel Expense" type="Number" ></ion-input>
+              <ion-input formControlName="travelexpense" label="Travel Expense" label-placement="floating" fill="solid" placeholder="Travel Expense" type="Number" ></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('travelexpense')?.valid && form.get('travelexpense')?.touched">
               <ion-text class="error" *ngIf="form.get('travelexpense')?.hasError('required')" color="danger">

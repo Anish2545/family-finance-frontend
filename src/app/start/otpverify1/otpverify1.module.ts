@@ -4,11 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-
 import { Otpverify1PageRoutingModule } from './otpverify1-routing.module';
 
 import { Otpverify1Page } from './otpverify1.page';
-
 
 @NgModule({
   imports: [
@@ -19,5 +17,10 @@ import { Otpverify1Page } from './otpverify1.page';
   ],
   declarations: [Otpverify1Page]
 })
-export class Otpverify1PageModule {}
+export class HomePageModule {}
 
+    Otpverify1PageRoutingModule
+ 
+  declarations: [Otpverify1Page]
+
+export class Otpverify1PageModule {}
