@@ -18,7 +18,13 @@ const auth = getAuth(app);
 export class LoginPage implements OnInit {
 
   form!: FormGroup;
-  type: boolean = true;
+  type: boolean = true; 
+  isOTPVerification: boolean = false;
+
+  // Implement openOTPVerification() method to set isOTPVerification to true
+  openOTPVerification() {
+    this.isOTPVerification = true;
+  }
 
   otpVerificationMode: string = 'mobile';
   MobileNo: string = '';
@@ -130,7 +136,7 @@ export class LoginPage implements OnInit {
 
   onOtpChange(otp: any) {
     this.otp = otp;
-    if (otp.length === 4) {
+    if (otp.length === 6) {
       this.disabled = false;
     }
   }
@@ -153,7 +159,7 @@ export class LoginPage implements OnInit {
       this.form.markAllAsTouched();
       return;
     }
-    this.router.navigate(['/enter-otp']);
+    this.router.navigate(['/start/enter-otp']);
     console.log(this.form.value);
   }
 }
