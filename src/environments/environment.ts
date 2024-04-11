@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-   firebaseConfig : {
+  firebaseConfig: {
     apiKey: "AIzaSyAUoMQ--0U7waa7FlwIMTOZy_GYPv4d4Qc",
     authDomain: "family-expense-tracker-4d9fb.firebaseapp.com",
     projectId: "family-expense-tracker-4d9fb",
@@ -13,6 +13,7 @@ export const environment = {
     appId: "1:199763185971:web:d1decd5ae2845026682e46"
   }
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
