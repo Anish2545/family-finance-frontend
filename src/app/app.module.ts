@@ -15,7 +15,7 @@ import { register } from 'swiper/element/bundle';
     AppRoutingModule,
     NgOtpInputModule // Add NgOtpInputModule to imports
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

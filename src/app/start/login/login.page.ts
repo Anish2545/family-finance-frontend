@@ -1,10 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';// import firebase from 'firebase/compat/app';
-import { environment } from 'src/environments/environment.prod';
 import firebase from 'firebase/compat/app';
+import { getAuth } from 'firebase/auth';
+import { environment } from 'src/environments/environment';
 import { CountdownComponent } from 'ngx-countdown';
 import { Router } from '@angular/router';
-import { getElement } from 'ionicons/dist/types/stencil-public-runtime';
+
+const app = firebase.initializeApp(environment.firebaseConfig);
+const auth = getAuth(app);
+
 
 @Component({
   selector: 'app-login',
@@ -17,7 +21,6 @@ export class LoginPage implements OnInit {
   type: boolean = true;
 
   otpVerificationMode: string = 'mobile';
-  recaptchaVerifier: any;
   MobileNo: string = '';
   labelMobileNo: string = '';
   preFixMobileNo: string = '';
@@ -50,19 +53,21 @@ export class LoginPage implements OnInit {
     this.form = this.formBuilder.group({
       phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
     });
-
+    this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+      'sign-in-button',
+      { size: 'invisible' }
+    );
   }
 
   onSubmitLoginForm() {
     if (this.form.valid) {
       this.otpVerificationMode = 'mobile';
-      this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-        'sign-in-button',
-      );
-      let preFixMobileNo = '+91' + (this.form.value['phone'] ?? '').toString();
+
+      let preFixMobileNo =
+        '+91' + (this.form.value['phone'] ?? '').toString();
       firebase
         .auth()
-        .signInWithPhoneNumber(preFixMobileNo, this.recaptchaVerifier)
+        .signInWithPhoneNumber(preFixMobileNo, this.reCaptchaVerifier)
         .then((confirmationResult) => {
           this.MobileNo = this.preFixMobileNo;
           this.labelMobileNo =
@@ -83,7 +88,6 @@ export class LoginPage implements OnInit {
         });
     }
   }
-
 
   verifyOTP() {
     console.log(this.otp);
