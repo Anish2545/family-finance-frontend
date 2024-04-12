@@ -6,7 +6,7 @@ import { DashboardPage } from './dashboard.page';
 const routes: Routes = [
 
   {
-    path: 'dashboard',
+    path: '',
     component: DashboardPage,
     children: [
       {
@@ -31,7 +31,15 @@ const routes: Routes = [
         pathMatch: 'full'
       }
     ]
-  },  
+  },   {
+    path: 'budgetalert',
+    loadChildren: () => import('./budgetalert/budgetalert.module').then( m => m.BudgetalertPageModule)
+  },
+  {
+    path: 'transactionentry',
+    loadChildren: () => import('./transactionentry/transactionentry.module').then( m => m.TransactionentryPageModule)
+  },
+ 
 ];
 
 @NgModule({

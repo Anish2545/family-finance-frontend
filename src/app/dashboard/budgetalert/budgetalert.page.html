@@ -1,0 +1,46 @@
+<ion-content [fullscreen]="true">
+  <div class="ion-text-center heading">
+    <img src="assets\budgetalert.svg" alt="Family Finance Image" style="max-width: 100%; height: auto;">
+    <h2>Budget Alert</h2>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-row class="footer-row">
+    <ion-list background="transparent" lines="full">
+      <ion-list-header class="ion-margin">
+        <ion-label>Set Budget</ion-label>
+      </ion-list-header>
+      <ion-item-group class="ion-margin-horizontal ion-margin-bottom">
+        <form [formGroup]="form">
+          <div class="ion-margin-vertical">
+            <ion-item>
+              <ion-select formControlName="category" interface="popover" placeholder="Select Category">
+                <ion-select-option value="food">Food</ion-select-option>
+                <ion-select-option value="utilities">Utilities</ion-select-option>
+                <ion-select-option value="entertainment">Entertainment</ion-select-option>
+                <!-- Add more options as needed -->
+              </ion-select>
+            </ion-item>
+          </div>
+          <div class="ion-margin-vertical">
+            <ion-item>
+              <ion-input formControlName="budget" label="Budget Amount" label-placement="floating" fill="outline" placeholder="Budget Amount" type="number"></ion-input>
+            </ion-item>
+            <ion-text *ngIf="!form.get('budget')?.valid && form.get('budget')?.touched">
+              <ion-text class="error" *ngIf="form.get('budget')?.hasError('required')" color="danger">
+                * Please enter the Budget Amount
+              </ion-text>
+            </ion-text>
+          </div>
+        </form>
+        <ion-item lines="none" class="ion-padding-top">
+          <div style="display: flex; justify-content: center; width: 100%;">
+            <ion-button shape="round" expand="block" class="button" (click)="save()">SAVE</ion-button>
+            <ion-button shape="round" expand="block" class="button" (click)="cancel()">CANCEL</ion-button>
+          </div>
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+  </ion-row>
+</ion-footer>
+

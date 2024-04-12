@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  serverBaseurl: 'http://localhost:3000/',
   firebaseConfig: {
     apiKey: "AIzaSyAUoMQ--0U7waa7FlwIMTOZy_GYPv4d4Qc",
     authDomain: "family-expense-tracker-4d9fb.firebaseapp.com",

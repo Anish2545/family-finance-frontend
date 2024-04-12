@@ -18,3 +18,4 @@ import { SplitTravelPage } from './split-travel.page';
   declarations: [SplitTravelPage]
 })
 export class SplitTravelPageModule {}
+

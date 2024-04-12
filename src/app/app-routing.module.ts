@@ -3,14 +3,14 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+ {
     path: 'start',
     loadChildren: () => import('./start/start.module').then(m => m.StartPageModule)
   },
-  {
-    path: '',
-    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
-  },
- 
+  
 ];
 @NgModule({
   imports: [
