@@ -1,0 +1,41 @@
+ion-header{
+    background-color: #ffffff;
+    ion-toolbar{
+        ion-title{
+            padding-top: 2vh;
+            font-weight: bold;
+            font-size: 30px;
+            font-variant: linear;
+        }
+
+        ion-buttons{
+            padding-top: 2vh;
+            ion-thumbnail{
+                background-color: #d9d9d9;
+                --border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                ion-icon{
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+}
+
+ion-content{
+    ion-card{
+        background-color: #595959;
+        width:100%;
+        ion-card-title{
+            color:#ffffff
+        }
+        ion-card-subtitle{
+            color:#ffffff
+        }
+        ion-card-content{
+            color:#ffffff
+        }
+    }
+}

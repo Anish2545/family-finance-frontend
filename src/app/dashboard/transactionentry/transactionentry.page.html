@@ -1,0 +1,59 @@
+
+
+
+<ion-content [fullscreen]="true">
+  <div class="ion-text-center heading">
+    <img src="assets\transaction.svg" alt="Family Finance Image" style="max-width: 65%; height: auto;">
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-row class="footer-row">
+    <ion-list background="transparent" lines="full">
+      <ion-list-header class="ion-margin">
+        <ion-label>Transaction Entry</ion-label>
+      </ion-list-header>
+      <ion-item-group class="ion-margin-horizontal ion-margin-bottom">
+        <form [formGroup]="form">
+          <div class="ion-margin-vertical">
+            <ion-item>
+              <ion-select formControlName="category" placeholder="Select Category">
+                <ion-select-option value="income">Income</ion-select-option>
+                <ion-select-option value="expense">Expense</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div>
+
+          <div class="ion-margin-vertical">
+            <ion-item>
+              <ion-input formControlName="transactionDate" label="Date of Transaction" label-placement="floating" fill="outline" placeholder="Date of Transaction" type="date"></ion-input>
+            </ion-item>
+            <ion-text *ngIf="!form.get('transactionDate')?.valid && form.get('transactionDate')?.touched">
+              <ion-text class="error" *ngIf="form.get('transactionDate')?.hasError('required')" color="danger">
+                * Please enter Date of Transaction
+              </ion-text>
+            </ion-text>
+          </div>
+
+          <div class="ion-margin-vertical">
+            <ion-item>
+              <ion-input formControlName="amount" label="Amount" label-placement="floating" fill="outline" placeholder="Amount" type="number"></ion-input>
+            </ion-item>
+            <ion-text *ngIf="!form.get('amount')?.valid && form.get('amount')?.touched">
+              <ion-text class="error" *ngIf="form.get('amount')?.hasError('required')" color="danger">
+                * Please enter Amount
+              </ion-text>
+            </ion-text>
+          </div>
+
+          <div class="ion-margin-vertical">
+            <ion-item>
+              <ion-input formControlName="category" label="Category" label-placement="floating" fill="outline" placeholder="Category" type="text"></ion-input>
+            </ion-item>
+            <!-- You may add validation if needed -->
+          </div>
+
+          <ion-item lines="none" class="ion-padding-top">
+            <div style="display: flex; justify-content: center; width: 100%;">
+              <ion-button shape="round" expand="block" class="button" (click)="submitForm()">ADD</ion-button>
+

@@ -13,7 +13,7 @@
         <form [formGroup]="form">
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="name" label="Full Name" label-placement="floating" fill="outline" placeholder="Full Name" type="text"></ion-input>
+              <ion-input formControlName="name" label="Full Name" label-placement="floating" fill="solid" placeholder="Full Name" type="text"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('name')?.valid && form.get('name')?.touched">
               <ion-text class="error" *ngIf="form.get('name')?.hasError('required')" color="danger">
@@ -24,7 +24,7 @@
 
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="phone" label="Mobile No" label-placement="floating" fill="outline" placeholder="Mobile No" type="tel" minlength="10" maxlength="10"></ion-input>
+              <ion-input formControlName="phone" label="Mobile No" label-placement="floating" fill="solid" placeholder="Mobile No" type="tel" minlength="10" maxlength="10"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('phone')?.valid && form.get('phone')?.touched">
               <ion-text class="error" *ngIf="form.get('phone')?.hasError('required')" color="danger">
@@ -38,7 +38,7 @@
 
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="profession" label="Professional/Occupation" label-placement="floating" fill="outline" placeholder="Professional/Occupation" type="text"></ion-input>
+              <ion-input formControlName="profession" label="Professional/Occupation" label-placement="floating" fill="solid" placeholder="Professional/Occupation" type="text"></ion-input>
             </ion-item>
             <!-- Add validation if needed -->
           </div>
@@ -56,7 +56,7 @@
 
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="email" label="Email ID" label-placement="floating" fill="outline" placeholder="Email ID" type="email"></ion-input>
+              <ion-input formControlName="email" label="Email ID" label-placement="floating" fill="solid" placeholder="Email ID" type="email"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('email')?.valid && form.get('email')?.touched">
               <ion-text class="error" *ngIf="form.get('email')?.hasError('required')" color="danger">

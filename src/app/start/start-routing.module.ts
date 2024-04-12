@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { StartPage } from './start.page';
+import { StartPage } from './start.page'; 
 
 const routes: Routes = [
   {
@@ -13,17 +13,16 @@ const routes: Routes = [
     loadChildren: () => import('./sign-up/sign-up.module').then( m => m.SignUpPageModule)
   },
   {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
     path: 'enter-otp',
     loadChildren: () => import('./enterotp/enterotp.module').then( m => m.EnterotpPageModule)
   },
   {
     path: 'otp-verify',
     loadChildren: () => import('./otpverify2/otpverify2.module').then( m => m.Otpverify2PageModule)
-  },
-
-  {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'otpverify1',

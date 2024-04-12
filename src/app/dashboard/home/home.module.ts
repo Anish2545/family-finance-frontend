@@ -4,23 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { Otpverify1PageRoutingModule } from './otpverify1-routing.module';
+import { HomePageRoutingModule } from './home-routing.module';
 
-import { Otpverify1Page } from './otpverify1.page';
+import { HomePage } from './home.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    Otpverify1PageRoutingModule
+    HomePageRoutingModule
   ],
-  declarations: [Otpverify1Page]
+  declarations: [HomePage]
 })
 export class HomePageModule {}
-
-    Otpverify1PageRoutingModule
- 
-  declarations: [Otpverify1Page]
-
-export class Otpverify1PageModule {}
