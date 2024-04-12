@@ -6,21 +6,22 @@ import { DashboardPage } from './dashboard.page';
 const routes: Routes = [
 
   {
+
     path: 'dashboard',
     component: DashboardPage,
     children: [
+
       {
+        path: 'transaction',
+        loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule)
+      },
+
+  {
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
       },
-      {
-        path: 'subuser',
-        loadChildren: () => import('./subuser/subuser.module').then(m => m.SubuserPageModule)
-      },
-      {
-        path: 'split-travel',
-        loadChildren: () => import('./split-travel/split-travel.module').then(m => m.SplitTravelPageModule)
-      },
+
+
       {
         path: '',
         redirectTo: '/dashboard/profile',
@@ -28,6 +29,10 @@ const routes: Routes = [
       }
     ]
   },
+
+
+
+
 
 ];
 

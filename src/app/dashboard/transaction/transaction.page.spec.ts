@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SplitTravelPage } from './split-travel.page';
+import { TransactionPage } from './transaction.page';
 
-describe('SplitTravelPage', () => {
-  let component: SplitTravelPage;
-  let fixture: ComponentFixture<SplitTravelPage>;
+describe('TransactionPage', () => {
+  let component: TransactionPage;
+  let fixture: ComponentFixture<TransactionPage>;
 
   beforeEach(async(() => {
-    fixture = TestBed.createComponent(SplitTravelPage);
+    fixture = TestBed.createComponent(TransactionPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

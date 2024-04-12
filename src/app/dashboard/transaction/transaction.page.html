@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-list-header class="ion-margin">
+    <ion-label>Subuser Account</ion-label>
+  </ion-list-header>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Header -->
+  <div class="ion-text-center heading">
+    <img src="assets/moneyincome.svg" alt="Family Finance Image" style="max-width: 85%; height: auto;">
+  </div>
+
+  <!-- Subtitle -->
+  <ion-list-header>
+    <ion-label>Username List </ion-label>
+  </ion-list-header>
+
+  <!-- Main Content Area -->
+  <ion-list>
+    <ion-item *ngFor="let user of items; let index">
+      <ion-avatar slot="start">
+        <img [src]="user.image" alt="User Image">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ user.title }}</h2>
+        <p>{{ user.subtitle }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Infinite Scroll -->
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
