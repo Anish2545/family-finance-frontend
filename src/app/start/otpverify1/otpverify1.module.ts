@@ -13,7 +13,6 @@ import { Otpverify1Page } from './otpverify1.page';
     CommonModule,
     FormsModule,
     IonicModule,
-
     Otpverify1PageRoutingModule
   ],
   declarations: [Otpverify1Page]

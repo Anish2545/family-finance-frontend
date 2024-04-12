@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import Swiper from 'swiper';
+import { Plugins } from '@capacitor/core';
+const { Preferences } = Plugins;
 
 @Component({
   selector: 'app-carousel',
@@ -7,9 +10,14 @@ import Swiper from 'swiper';
   styleUrls: ['./carousel.page.scss'],
 })
 export class CarouselPage implements OnInit {
-  constructor() { }
 
-  ngOnInit() {
+  constructor(private router: Router) { }
+
+   ngOnInit() {
+   this.initializeSwiper() ;
+  }
+
+  initializeSwiper() {
     const swiper = new Swiper('.swiper', {
       direction: 'horizontal',
       loop: true,
@@ -17,7 +25,11 @@ export class CarouselPage implements OnInit {
         el: '.swiper-pagination',
       },
     });
-    
+  }
+
+  async handleGetStarted() {
+    await Preferences.set({ key: 'isSecondTime', value: 'true' });
+    this.router.navigateByUrl('/start/login');
   }
 
 }
