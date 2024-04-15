@@ -8,7 +8,6 @@ const routes: Routes = [
   {
 
     path: 'dashboard',
-    path: '',
     component: DashboardPage,
     children: [
 
@@ -46,6 +45,15 @@ const routes: Routes = [
     path: 'transactionentry',
     loadChildren: () => import('./transactionentry/transactionentry.module').then( m => m.TransactionentryPageModule)
   },
+  {
+    path: 'subuser',
+    loadChildren: () => import('./subuser/subuser.module').then( m => m.SubuserPageModule)
+  },
+  {
+    path: 'split-travel',
+    loadChildren: () => import('./split-travel/split-travel.module').then( m => m.SplitTravelPageModule)
+  },
+
 
 ];
 
