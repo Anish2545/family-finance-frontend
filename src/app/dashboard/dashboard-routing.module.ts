@@ -6,18 +6,10 @@ import { DashboardPage } from './dashboard.page';
 const routes: Routes = [
 
   {
-
-    path: 'dashboard',
     path: '',
     component: DashboardPage,
     children: [
-
       {
-        path: 'transaction',
-        loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule)
-      },
-
-  {
         path: 'home',
         loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
       },
@@ -25,8 +17,10 @@ const routes: Routes = [
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
       },
-
-
+         {
+        path: 'split-travel',
+        loadChildren: () => import('./split-travel/split-travel.module').then(m => m.SplitTravelPageModule)
+      },
       {
         path: '',
         redirectTo: '/dashboard/home',
@@ -37,11 +31,6 @@ const routes: Routes = [
     path: 'budgetalert',
     loadChildren: () => import('./budgetalert/budgetalert.module').then( m => m.BudgetalertPageModule)
   },
-
-
-
-
-
   {
     path: 'transactionentry',
     loadChildren: () => import('./transactionentry/transactionentry.module').then( m => m.TransactionentryPageModule)
@@ -54,3 +43,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class DashboardPageRoutingModule {}
+
