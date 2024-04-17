@@ -6,7 +6,6 @@ import { DashboardPage } from './dashboard.page';
 const routes: Routes = [
 
   {
-
     path: 'dashboard',
     component: DashboardPage,
     children: [
