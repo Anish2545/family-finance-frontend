@@ -6,16 +6,21 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { register } from 'swiper/element/bundle';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptorService } from './Services/interceptor/jwt-interceptor.service';
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    HttpClientModule,
     AppRoutingModule,
     NgOtpInputModule // Add NgOtpInputModule to imports
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, },{
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptorService,
+    multi: true,},],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

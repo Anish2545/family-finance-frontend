@@ -10,11 +10,7 @@ const routes: Routes = [
     path: 'start',
     loadChildren: () => import('./start/start.module').then(m => m.StartPageModule)
   },
- {
-    path: 'start',
-    loadChildren: () => import('./start/start.module').then(m => m.StartPageModule)
-  },
-
+ 
 ];
 @NgModule({
   imports: [
