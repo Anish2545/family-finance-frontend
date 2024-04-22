@@ -1,18 +1,21 @@
-<ion-content [fullscreen]="true" class="ion-text-center">
-  <div class="heading">
-    <img src="assets\roadtrip.svg" alt="Family Finance Image" style="width: 131px; height: auto;">
-    <h1 class="profile-header">Split Travel Expenditure</h1>
+
+
+<ion-content [fullscreen]="true">
+  <div class="ion-text-center heading">
+    <img src="assets\roadtrip.svg" alt="Family Finance Image" style="max-width: 69%; height: auto;">
   </div>
 </ion-content>
 <ion-footer class="ion-no-border">
-  <ion-row class="ion-justify-content-center">
+  <ion-row class="footer-row">
     <ion-list background="transparent" lines="full">
-
+      <ion-list-header class="ion-margin">
+        <ion-label>Split Travel Expenditure</ion-label>
+      </ion-list-header>
       <ion-item-group class="ion-margin-horizontal ion-margin-bottom">
         <form [formGroup]="form">
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="destination" label="Destination" label-placement="floating" fill="solid" placeholder="Destination" type="text"></ion-input>
+              <ion-input formControlName="destination" label="Destination" label-placement="floating" fill="outline" placeholder="Destination" type="text"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('destination')?.valid && form.get('destination')?.touched">
               <ion-text class="error" *ngIf="form.get('destination')?.hasError('required')" color="danger">
@@ -23,7 +26,7 @@
 
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="noOfPersons" label="No. Of Persons" label-placement="floating" fill="solid" placeholder="No of Persons" type="Number" ></ion-input>
+              <ion-input formControlName="noOfPersons" label="No. Of Persons" label-placement="floating" fill="outline" placeholder="No of Persons" type="number"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('noOfPersons')?.valid && form.get('noOfPersons')?.touched">
               <ion-text class="error" *ngIf="form.get('noOfPersons')?.hasError('required')" color="danger">
@@ -34,7 +37,7 @@
 
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="personname" label="Person Name" label-placement="floating" fill="solid" placeholder="Person Name" type="text"></ion-input>
+              <ion-input formControlName="personname" label="Person Name" label-placement="floating" fill="outline" placeholder="Person Name" type="text"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('personname')?.valid && form.get('personname')?.touched">
               <ion-text class="error" *ngIf="form.get('personname')?.hasError('required')" color="danger">
@@ -46,7 +49,7 @@
 
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="travelexpense" label="Travel Expense" label-placement="floating" fill="solid" placeholder="Travel Expense" type="Number" ></ion-input>
+              <ion-input formControlName="travelexpense" label="Travel Expense" label-placement="floating" fill="outline" placeholder="Travel Expense" type="number"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('travelexpense')?.valid && form.get('travelexpense')?.touched">
               <ion-text class="error" *ngIf="form.get('travelexpense')?.hasError('required')" color="danger">
@@ -68,3 +71,4 @@
     </ion-list>
   </ion-row>
 </ion-footer>
+

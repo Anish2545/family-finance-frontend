@@ -1,22 +1,25 @@
-ion-header{
+ion-header {
     background-color: #ffffff;
-    ion-toolbar{
-        ion-title{
+
+    ion-toolbar {
+        ion-title {
             padding-top: 2vh;
             font-weight: bold;
             font-size: 30px;
             font-variant: linear;
         }
 
-        ion-buttons{
+        ion-buttons {
             padding-top: 2vh;
-            ion-thumbnail{
+
+            ion-thumbnail {
                 background-color: #d9d9d9;
                 --border-radius: 10px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                ion-icon{
+
+                ion-icon {
                     font-size: 1.5rem;
                 }
             }
@@ -24,18 +27,46 @@ ion-header{
     }
 }
 
-ion-content{
-    ion-card{
+ion-content {
+    .balance {
         background-color: #595959;
-        width:100%;
-        ion-card-title{
-            color:#ffffff
+        width: auto;
+        height: 100px;
+
+        ion-card-title {
+            color: #ffffff
         }
-        ion-card-subtitle{
-            color:#ffffff
+
+        ion-card-content {
+            color: #ffffff
         }
-        ion-card-content{
-            color:#ffffff
+    }
+
+    .income {
+        background-color: #d9d9d9;
+        width: auto;
+        height: 100px;
+
+        ion-card-title {
+            color: #000000
+        }
+
+        ion-card-content {
+            color: #000000
+        }
+    }
+
+    .expense {
+        background-color: #d9d9d9;
+        width: auto;
+        height: 100px;
+
+        ion-card-title {
+            color: #000000
+        }
+
+        ion-card-content {
+            color: #000000
         }
     }
 }

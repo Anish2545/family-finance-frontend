@@ -19,7 +19,7 @@ const routes: Routes = [
         loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule)
       },
 
-  {
+      {
         path: 'home',
         loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
       },
@@ -31,7 +31,6 @@ const routes: Routes = [
         path: 'budgetalert',
         loadChildren: () => import('./budgetalert/budgetalert.module').then( m => m.BudgetalertPageModule)
       },
-
 
       {
         path: 'transactionentry',
@@ -54,7 +53,9 @@ const routes: Routes = [
       }
     ]
   }
-];
+  ];
+
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

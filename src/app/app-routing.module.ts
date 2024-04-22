@@ -11,8 +11,6 @@ const routes: Routes = [
     loadChildren: () => import('./start/start.module').then(m => m.StartPageModule)
   },
 
-
-
 ];
 @NgModule({
   imports: [
