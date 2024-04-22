@@ -10,6 +10,10 @@ const routes: Routes = [
     component: DashboardPage,
     children: [
 
+  {
+    path: 'transactionhistory',
+    loadChildren: () => import('./transactionhistory/transactionhistory.module').then(m => m.TransactionhistoryModule)
+  },
       {
         path: 'transaction',
         loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule)
@@ -23,6 +27,24 @@ const routes: Routes = [
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
       },
+      {
+        path: 'budgetalert',
+        loadChildren: () => import('./budgetalert/budgetalert.module').then( m => m.BudgetalertPageModule)
+      },
+
+
+      {
+        path: 'transactionentry',
+        loadChildren: () => import('./transactionentry/transactionentry.module').then( m => m.TransactionentryPageModule)
+      },
+      {
+        path: 'subuser',
+        loadChildren: () => import('./subuser/subuser.module').then( m => m.SubuserPageModule)
+      },
+      {
+        path: 'split-travel',
+        loadChildren: () => import('./split-travel/split-travel.module').then( m => m.SplitTravelPageModule)
+      },
 
 
       {
@@ -31,29 +53,7 @@ const routes: Routes = [
         pathMatch: 'full'
       }
     ]
-  },   {
-    path: 'budgetalert',
-    loadChildren: () => import('./budgetalert/budgetalert.module').then( m => m.BudgetalertPageModule)
-  },
-
-
-
-
-
-  {
-    path: 'transactionentry',
-    loadChildren: () => import('./transactionentry/transactionentry.module').then( m => m.TransactionentryPageModule)
-  },
-  {
-    path: 'subuser',
-    loadChildren: () => import('./subuser/subuser.module').then( m => m.SubuserPageModule)
-  },
-  {
-    path: 'split-travel',
-    loadChildren: () => import('./split-travel/split-travel.module').then( m => m.SplitTravelPageModule)
-  },
-
-
+  }
 ];
 
 @NgModule({

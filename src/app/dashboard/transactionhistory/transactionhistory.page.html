@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-list-header class="ion-margin">
+    <ion-label>Transaction History</ion-label>
+  </ion-list-header>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Header -->
+  <div class="ion-text-center heading">
+    <img src="assets/moneyincome.svg" alt="Family Finance Image" style="max-width: 85%; height: auto;">
+  </div>
+
+  <!-- Subtitle -->
+  <ion-list-header>
+    <ion-label>Recent Transactions</ion-label>
+  </ion-list-header>
+
+  <!-- Main Content Area -->
+  <ion-list>
+    <ion-item *ngFor="let transaction of transactions; let index">
+      <ion-avatar slot="start">
+
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ transaction.date }}</h2>
+        <p>Amount: {{ transaction.amount }}</p>
+        <p>Type: {{ transaction.type }}</p>
+        <p>Category: {{ transaction.category }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Infinite Scroll -->
+  <ion-infinite-scroll (ionInfinite)="loadMoreTransactions($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -23,7 +23,7 @@ export class AppComponent {
     // const preferences = await Preferences.get({ key: 'isSecondTime' });
 
     // const isSecondTime = preferences.value;
-    
+
     // if (isSecondTime === 'true') {
     //   this.router.navigateByUrl('/start/login');
     // } else {
