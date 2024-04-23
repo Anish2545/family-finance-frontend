@@ -9,6 +9,7 @@ export class TransactionHistoryPage {
   transactions: any[] = []; // Assuming transactions are stored in this array
 
   constructor() {
+    debugger
     // Assuming you fetch transactions from somewhere (e.g., a service) and assign them to the transactions array
     this.fetchTransactions();
   }

@@ -5,9 +5,13 @@ import { getAuth } from 'firebase/auth';
 import { environment } from 'src/environments/environment';
 import { CountdownComponent } from 'ngx-countdown';
 import { Router } from '@angular/router';
+import { UtilService } from 'src/app/util.service';
+import { ToastController } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
 
 const app = firebase.initializeApp(environment.firebaseConfig);
 const auth = getAuth(app);
+const { Preferences } = Plugins;
 
 
 @Component({
@@ -55,7 +59,13 @@ export class LoginPage implements OnInit {
     | undefined;
 
 
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+    constructor(
+      private formBuilder: FormBuilder,
+      private router: Router,
+      private utilService: UtilService,
+      private toastController: ToastController // Inject ToastController
+    ) {}
+  
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -153,13 +163,51 @@ export class LoginPage implements OnInit {
   changeType() {
     this.type = !this.type;
   }
+  async warningtoast() {
+    const toast = await this.toastController.create({
+      message: 'This number doesnt exist',
+      duration: 2000,
+      position: 'bottom',
+      color:'danger'
+      //cssClass: 'warning-toast',
+    });
+    toast.present();
+  }
+  async successtoast() {
+    const toast = await this.toastController.create({
+      message: 'Phone number is Valid',
+      duration: 2000,
+      position: 'bottom',
+      color:'success'
+      //cssClass: 'green-toast',
+    });
+    toast.present();
+  }
 
   logIn() {
     if (!this.form.invalid) {
       this.form.markAllAsTouched();
       return;
     }
-    this.router.navigate(['/start/enter-otp']);
-    console.log(this.form.value);
-  }
+    let reqBody = {
+      mobileNo: this.form.controls["phone"].value
+    };
+
+    this.utilService.callFormPostApi(reqBody, "user/check-mobile-no").subscribe(result => {
+      if (result.flag) {
+        this.successtoast(); 
+        this.router.navigate(['/login']);
+        console.log(this.form.value);
+      } else {
+        this.warningtoast(); // Call the presentToast method to display the toast
+      }
+    //this.router.navigate(['/start/enter-otp']);
+    //console.log(this.form.value);
+  });
+}
+
+async handleGetStarted() {
+  await Preferences.set({ key: 'token', value: 'true' });
+  this.router.navigateByUrl('/start/otpverify2');
+}
 }

@@ -19,15 +19,21 @@ export class AppComponent {
     }, 3000);
   }
 
-  //ngOnInit() {
-    // const preferences = await Preferences.get({ key: 'isSecondTime' });
+  async ngOnInit() {
+    const preferences = await Preferences.get({ key: 'isSecondTime' });
+    const preferences2 = await Preferences.get({ key: 'isSecondTime' });
 
-    // const isSecondTime = preferences.value;
+    const isSecondTime = preferences.value;
+    const access_token = preferences2.value;
 
-    // if (isSecondTime === 'true') {
-    //   this.router.navigateByUrl('/start/login');
-    // } else {
-    //   this.router.navigateByUrl('/start');
-    // }
-  //}
+    if (isSecondTime === 'true') {
+      if (access_token) {
+        this.router.navigateByUrl('/dashboard');
+      } else {
+        this.router.navigateByUrl('/start/login');
+      }
+    } else {
+      this.router.navigateByUrl('/start');
+    }
+  }
 }
