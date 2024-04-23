@@ -10,14 +10,15 @@ const routes: Routes = [
     component: DashboardPage,
     children: [
 
-  {
-    path: 'transactionhistory',
-    loadChildren: () => import('./transactionhistory/transactionhistory.module').then(m => m.TransactionhistoryModule)
-  },
-      {
+    {
         path: 'transaction',
         loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule)
       },
+       {
+    path: 'transactionhistory',
+    loadChildren: () => import('./transactionhistory/transactionhistory.module').then(m => m.TransactionhistoryModule)
+     },
+
 
       {
         path: 'home',

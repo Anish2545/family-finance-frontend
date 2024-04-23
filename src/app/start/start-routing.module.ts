@@ -6,26 +6,31 @@ import { StartPage } from './start.page';
 const routes: Routes = [
 
     {
-    path: '',
+    path: 'otpverify1',
     loadChildren: () => import('./otpverify1/otpverify1.module').then( m => m.Otpverify1PageModule)
    },
-  {
+    {
     path: 'otpverify2',
     loadChildren: () => import('./otpverify2/otpverify2.module').then( m => m.Otpverify2PageModule)
   },
 
-  {
-    path: 'enterotp',
-    loadChildren: () => import('./enterotp/enterotp.module').then( m => m.EnterotpPageModule)
+   {
+    path: 'sign-up',
+    loadChildren: () => import('./sign-up/sign-up.module').then( m => m.SignUpPageModule)
   },
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
+
+
+
   {
-    path: 'sign-up',
-    loadChildren: () => import('./sign-up/sign-up.module').then( m => m.SignUpPageModule)
+    path: 'enterotp',
+    loadChildren: () => import('./enterotp/enterotp.module').then( m => m.EnterotpPageModule)
   },
+
+
    {
     path: 'carousel',
     loadChildren: () => import('./carousel/carousel.module').then( m => m.CarouselPageModule)
