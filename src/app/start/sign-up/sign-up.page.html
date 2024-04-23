@@ -1,73 +1,103 @@
-<ion-content [fullscreen]="true" class="ion-text-center">
-  <div class="heading">
-    <img src="assets/FamilyFinance.png" alt="Family Finance Image" style="width: 100%; height: auto;">
-    <h1 class="profile-header">Family Finance</h1>
+<div id="sign-in-button"></div>
+<ng-template  [ngIf]="!isOTPVerification">
+  <ion-content  [fullscreen]="true" class="ion-text-center">
+    <div class="heading">
+      <img src="assets/FamilyFinance.png" alt="Family Finance Image" style="width: 100%; height: auto;">
+      <h1 class="profile-header">Family Finance</h1>
+    </div>
+  </ion-content>
+  <ion-footer  class="ion-no-border">
+    <ion-row class="ion-justify-content-center">
+      <ion-list background="transparent" lines="full">
+        
+        <ion-item-group class="ion-margin-horizontal ion-margin-bottom">
+          <form [formGroup]="form" >
+            <div class="ion-margin-vertical">
+              <ion-item>
+                <ion-input formControlName="name" label="Full Name" label-placement="floating" fill="solid" placeholder="Full Name" type="text"></ion-input>
+              </ion-item>
+              <ion-text *ngIf="!form.get('name')?.valid && form.get('name')?.touched">
+                <ion-text class="error" *ngIf="form.get('name')?.hasError('required')" color="danger">
+                  * Please enter Full Name
+                </ion-text>
+              </ion-text>
+            </div>
+  
+            <div class="ion-margin-vertical">
+              <ion-item>
+                <ion-input formControlName="phone" label="Mobile No" label-placement="floating" fill="solid" placeholder="Mobile No" type="tel" minlength="10" maxlength="10" ></ion-input>
+              </ion-item>
+              <ion-text *ngIf="!form.get('phone')?.valid && form.get('phone')?.touched">
+                <ion-text class="error" *ngIf="form.get('phone')?.hasError('required')" color="danger">
+                  * Please enter the Mobile Number
+                </ion-text>
+                <ion-text class="error" *ngIf="form.get('phone')?.hasError('minlength') && !form.get('phone')?.hasError('required')" color="danger">
+                  * Please enter a valid Mobile Number
+                </ion-text>
+              </ion-text>
+            </div>
+  
+            <div class="ion-margin-vertical">
+              <ion-item>
+                <ion-input formControlName="email" label="Email ID" label-placement="floating" fill="solid" placeholder="Email ID" type="email"></ion-input>
+              </ion-item>
+              <ion-text *ngIf="!form.get('email')?.valid && form.get('email')?.touched">
+                <ion-text class="error" *ngIf="form.get('email')?.hasError('required')" color="danger">
+                  * Please enter your Email Address
+                </ion-text>
+                <ion-text class="error" *ngIf="form.get('email')?.hasError('email') && !form.get('email')?.hasError('required')" color="danger">
+                  * Please enter a proper Email Address
+                </ion-text>
+              </ion-text>
+            </div>
+  
+            <div class="ion-margin-vertical">
+              <ion-item>
+                <ion-text color="black" fontsize="20">
+                  Already have an account?
+                </ion-text>
+                <ion-text class="log-in"  routerLink="/start/login">
+                  <strong>Log In</strong>
+                </ion-text>
+              </ion-item>
+            </div>
+            
+            <ion-item lines="none" class="ion-padding-top ion-no-border">
+              <div style="display: flex; justify-content: center; width: 100%;">
+                <ion-button  shape="round" expand="block" class="button" (click)="signUp()" >Send OTP</ion-button>
+              </div>
+            </ion-item>
+          </form>
+        </ion-item-group>
+      </ion-list>
+    </ion-row>
+  </ion-footer>
+</ng-template>
+
+
+<ng-template  [ngIf]="isOTPVerification">
+<!-- OTP Verification Section -->
+<ion-content  class="ion-padding" [fullscreen]="true">
+  <div class="container">
+    <div class="container" id="auth">
+      <!-- Image -->
+      <img src="assets\enterotp.png" alt="Image" class="center-image">
+
+      <!-- Text below Textbox -->
+      <div class="text-below-input">
+        <p class="text-bold-italic">Enter the OTP code</p>
+        <p class="text-regular">Enter the code sent on your mobile number</p>
+      </div>
+
+      <!-- OTP Input using ng-otp-input -->
+      <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:6}"></ng-otp-input>
+
+      <!-- Button -->
+      <div style="display: flex; justify-content: center;">
+        <ion-button expand="block" style="margin-top: 20px; max-width: 350px; height: 59px; --background: #7ED957; --border-radius: 50px;" (click)="verifyOTP()" type="ngSubmit">Verify</ion-button>
+      </div>
+    </div>
   </div>
 </ion-content>
-<ion-footer class="ion-no-border">
-  <ion-row class="ion-justify-content-center">
-    <ion-list background="transparent" lines="full">
-      
-      <ion-item-group class="ion-margin-horizontal ion-margin-bottom">
-        <form [formGroup]="form">
-          <div class="ion-margin-vertical">
-            <ion-item>
-              <ion-input formControlName="name" label="Full Name" label-placement="floating" fill="solid" placeholder="Full Name" type="text"></ion-input>
-            </ion-item>
-            <ion-text *ngIf="!form.get('name')?.valid && form.get('name')?.touched">
-              <ion-text class="error" *ngIf="form.get('name')?.hasError('required')" color="danger">
-                * Please enter Full Name
-              </ion-text>
-            </ion-text>
-          </div>
 
-          <div class="ion-margin-vertical">
-            <ion-item>
-              <ion-input formControlName="phone" label="Mobile No" label-placement="floating" fill="solid" placeholder="Mobile No" type="tel" minlength="10" maxlength="10" ></ion-input>
-            </ion-item>
-            <ion-text *ngIf="!form.get('phone')?.valid && form.get('phone')?.touched">
-              <ion-text class="error" *ngIf="form.get('phone')?.hasError('required')" color="danger">
-                * Please enter the Mobile Number
-              </ion-text>
-              <ion-text class="error" *ngIf="form.get('phone')?.hasError('minlength') && !form.get('phone')?.hasError('required')" color="danger">
-                * Please enter a valid Mobile Number
-              </ion-text>
-            </ion-text>
-          </div>
-
-          <div class="ion-margin-vertical">
-            <ion-item>
-              <ion-input formControlName="email" label="Email ID" label-placement="floating" fill="solid" placeholder="Email ID" type="email"></ion-input>
-            </ion-item>
-            <ion-text *ngIf="!form.get('email')?.valid && form.get('email')?.touched">
-              <ion-text class="error" *ngIf="form.get('email')?.hasError('required')" color="danger">
-                * Please enter your Email Address
-              </ion-text>
-              <ion-text class="error" *ngIf="form.get('email')?.hasError('email') && !form.get('email')?.hasError('required')" color="danger">
-                * Please enter a proper Email Address
-              </ion-text>
-            </ion-text>
-          </div>
-
-          <div class="ion-margin-vertical">
-            <ion-item>
-              <ion-text color="black" fontsize="20">
-                Already have an account?
-              </ion-text>
-              <ion-text class="log-in"  routerLink="/start/login">
-                <strong>Log In</strong>
-              </ion-text>
-            </ion-item>
-          </div>
-          
-          <ion-item lines="none" class="ion-padding-top ion-no-border">
-            <div style="display: flex; justify-content: center; width: 100%;">
-              <ion-button shape="round" expand="block" class="button" (click)="signUp()">Verify OTP</ion-button>
-            </div>
-          </ion-item>
-        </form>
-      </ion-item-group>
-    </ion-list>
-  </ion-row>
-</ion-footer>
-
+</ng-template>

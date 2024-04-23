@@ -64,3 +64,12 @@ ion-item {
     padding-left: 5%;
     color: #7ed957;
 }
+.green-toast {
+    --background: #7ed957;
+    --color: #fff;
+  }
+  .warning-toast {
+    --background: #ff9800; /* Warning color */
+    --color: #fff; /* White text color */
+  }
+  

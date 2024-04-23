@@ -17,10 +17,11 @@ import { JwtInterceptorService } from './Services/interceptor/jwt-interceptor.se
     AppRoutingModule,
     NgOtpInputModule // Add NgOtpInputModule to imports
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, },{
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }, {
     provide: HTTP_INTERCEPTORS,
     useClass: JwtInterceptorService,
-    multi: true,},],
+    multi: true,
+  },],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

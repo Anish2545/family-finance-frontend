@@ -6,23 +6,24 @@ import { DashboardPage } from './dashboard.page';
 const routes: Routes = [
 
   {
-    path: 'dashboard',
+    path: '',
     component: DashboardPage,
     children: [
-
-    {
-        path: 'transaction',
-        loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule)
+      {
+        path: '',
+        loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
       },
-       {
-    path: 'transactionhistory',
-    loadChildren: () => import('./transactionhistory/transactionhistory.module').then(m => m.TransactionhistoryModule)
-     },
-
-
       {
         path: 'home',
         loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+      },
+      {
+        path: 'transactionhistory',
+        loadChildren: () => import('./transactionhistory/transactionhistory.module').then(m => m.TransactionhistoryModule)
+      },
+      {
+        path: 'transaction',
+        loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule)
       },
       {
         path: 'profile',
@@ -30,31 +31,24 @@ const routes: Routes = [
       },
       {
         path: 'budgetalert',
-        loadChildren: () => import('./budgetalert/budgetalert.module').then( m => m.BudgetalertPageModule)
+        loadChildren: () => import('./budgetalert/budgetalert.module').then(m => m.BudgetalertPageModule)
       },
 
       {
         path: 'transactionentry',
-        loadChildren: () => import('./transactionentry/transactionentry.module').then( m => m.TransactionentryPageModule)
+        loadChildren: () => import('./transactionentry/transactionentry.module').then(m => m.TransactionentryPageModule)
       },
       {
         path: 'subuser',
-        loadChildren: () => import('./subuser/subuser.module').then( m => m.SubuserPageModule)
+        loadChildren: () => import('./subuser/subuser.module').then(m => m.SubuserPageModule)
       },
       {
         path: 'split-travel',
-        loadChildren: () => import('./split-travel/split-travel.module').then( m => m.SplitTravelPageModule)
-      },
-
-
-      {
-        path: '',
-        redirectTo: '/dashboard/home',
-        pathMatch: 'full'
+        loadChildren: () => import('./split-travel/split-travel.module').then(m => m.SplitTravelPageModule)
       }
     ]
   }
-  ];
+];
 
 
 
@@ -62,4 +56,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DashboardPageRoutingModule {}
+export class DashboardPageRoutingModule { }
