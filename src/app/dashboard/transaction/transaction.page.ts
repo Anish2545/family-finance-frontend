@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonInfiniteScroll } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transaction',
@@ -12,7 +13,7 @@ export class TransactionPage {
   currentPage = 1; // Track current page of data
   totalPages = 5; // Assuming there are 5 pages of data in total
 
-  constructor() {
+  constructor(private router: Router) {
     // Load initial user data
     this.loadUserData();
   }
@@ -42,5 +43,10 @@ export class TransactionPage {
         event.target.disabled = true; // Disable infinite scroll if all data is loaded
       }
     }, 1000); // Adjust delay as needed
+  }
+
+  // Method to navigate to SubuserPage
+  navigateToSubuserPage() {
+    this.router.navigate(['/dashboard/subuser']); // Replace '/subuser' with the actual route path
   }
 }

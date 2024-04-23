@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-transaction-history',
   templateUrl: './transactionhistory.page.html',
@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class TransactionHistoryPage {
   transactions: any[] = []; // Assuming transactions are stored in this array
 
-  constructor() {
+  constructor(private router: Router) {
     debugger
     // Assuming you fetch transactions from somewhere (e.g., a service) and assign them to the transactions array
     this.fetchTransactions();
@@ -28,5 +28,8 @@ export class TransactionHistoryPage {
     // Logic to load more transactions when scrolling (if applicable)
     // For example, fetch more transactions and push them into the transactions array
     // Ensure to call event.target.complete() when done loading more data
+  }
+  navigateToTransactionEntry() {
+    this.router.navigate(['/dashboard/transactionentry']); // Replace '/transaction-entry' with the actual route path
   }
 }
