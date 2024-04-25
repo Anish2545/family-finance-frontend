@@ -8,7 +8,7 @@ import { Preferences } from '@capacitor/preferences';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false

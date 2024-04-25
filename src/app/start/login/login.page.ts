@@ -22,7 +22,7 @@ const { Preferences } = Plugins;
 export class LoginPage implements OnInit {
 
   form!: FormGroup;
-  type: boolean = true; 
+  type: boolean = true;
   isOTPVerification: boolean = false;
 
   // Implement openOTPVerification() method to set isOTPVerification to true
@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
   preFixMobileNo: string = '';
   confirmationResult: any;
   reCaptchaVerifier: any;
-  recaptchaVerifier:any;
+  recaptchaVerifier: any;
   isOTPVerficiation: boolean = false;
   isLoginBtnLoading: boolean = false;
   redirectInfoData: any;
@@ -59,13 +59,13 @@ export class LoginPage implements OnInit {
     | undefined;
 
 
-    constructor(
-      private formBuilder: FormBuilder,
-      private router: Router,
-      private utilService: UtilService,
-      private toastController: ToastController // Inject ToastController
-    ) {}
-  
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private utilService: UtilService,
+    private toastController: ToastController // Inject ToastController
+  ) { }
+
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -113,15 +113,20 @@ export class LoginPage implements OnInit {
 
     this.isVerifyOTPLoading = true;
 
-    this.confirmationResult.confirm(this.otp).then((user: any) => {
+    this.confirmationResult.confirm(this.otp).then(async (user: any) => {
       if (user.user.phoneNumber == this.preFixMobileNo) {
         let reqBody = {
           id_token: user.user.multiFactor.user.accessToken,
-          LoginId: this.MobileNo,
-          loginMode: 'loginWithMobileNo',
+          mobileNo: this.preFixMobileNo.replace("+91", ""),
         };
-        this.routerlink = '/start/otpverify2';
-        this.isOTPVerficiation = true;
+        this.utilService.callFormPostApi(reqBody, "user/signin").subscribe(async result => {
+          if (result.flag) {
+            await Preferences.set({ key: 'access_token', value: result.data.token });
+            this.router.navigate(['/dashboard']);
+          } else {
+            this.warningtoast(); // Call the presentToast method to display the toast
+          }
+        })
       } else {
         this.isVerifyOTPLoading = false;
         this.routerlink = '/';
@@ -168,7 +173,7 @@ export class LoginPage implements OnInit {
       message: 'This number doesnt exist',
       duration: 2000,
       position: 'bottom',
-      color:'danger'
+      color: 'danger'
       //cssClass: 'warning-toast',
     });
     toast.present();
@@ -178,7 +183,7 @@ export class LoginPage implements OnInit {
       message: 'Phone number is Valid',
       duration: 2000,
       position: 'bottom',
-      color:'success'
+      color: 'success'
       //cssClass: 'green-toast',
     });
     toast.present();
@@ -195,19 +200,19 @@ export class LoginPage implements OnInit {
 
     this.utilService.callFormPostApi(reqBody, "user/check-mobile-no").subscribe(result => {
       if (result.flag) {
-        this.successtoast(); 
+        this.successtoast();
         this.router.navigate(['/login']);
         console.log(this.form.value);
       } else {
         this.warningtoast(); // Call the presentToast method to display the toast
       }
-    //this.router.navigate(['/start/enter-otp']);
-    //console.log(this.form.value);
-  });
-}
+      //this.router.navigate(['/start/enter-otp']);
+      //console.log(this.form.value);
+    });
+  }
 
-async handleGetStarted() {
-  await Preferences.set({ key: 'token', value: 'true' });
-  this.router.navigateByUrl('/start/otpverify2');
-}
+  async handleGetStarted() {
+    await Preferences.set({ key: 'token', value: 'true' });
+    this.router.navigateByUrl('/start/otpverify2');
+  }
 }

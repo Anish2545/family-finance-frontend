@@ -5,7 +5,7 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, from, switchMap } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { environment } from 'src/environments/environment';
 
@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class JwtInterceptorService implements HttpInterceptor {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
 
   intercept(
     req: HttpRequest<any>,
@@ -22,12 +22,16 @@ export class JwtInterceptorService implements HttpInterceptor {
     const isLoggedIn = this.authService.isLoggedIn;
     const isApiUrl = req.url.startsWith(environment.serverURL);
     if (isLoggedIn && isApiUrl) {
-      const token = this.authService.getUserToken();
-      req = req.clone({
-        setHeaders: { 'x-auth-token': `${token}` },
-      });
+      return from(this.authService.getUserToken()).pipe(
+        switchMap((token) => {
+          req = req.clone({
+            setHeaders: { 'x-auth-token': `${token}` },
+          });
+          return next.handle(req);
+        })
+      );
     }
     return next.handle(req);
   }
-  
+
 }
