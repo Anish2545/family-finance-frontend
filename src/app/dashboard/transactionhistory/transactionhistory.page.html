@@ -15,16 +15,17 @@
 
   <!-- Main Content Area -->
   <ion-list>
-    <ion-item *ngFor="let transaction of transactions; let index">
-      <ion-avatar slot="start">
-
-      </ion-avatar>
+    <ion-item *ngFor="let t of transactions; let index">
+      <ion-avatar slot="start"></ion-avatar>
       <ion-label>
-        <h2>{{ transaction.transactionDate }}</h2>
-        <p>Amount: {{ transaction.amount }}</p>
-        <p>Type: {{ transaction.expenseCategory }}</p>
-        <p>Category: {{ transaction.isIncome }}</p>
+        <h2>{{ t.transactionDate }}</h2>
+        <p>Amount : {{ t.amount }}</p>
+        <p>Type : {{ t.expenseCategory }}</p>
+        <p>Category : {{ t.isIncome }}</p>
       </ion-label>
+      <ion-button class="delete" (click)="deleteTransaction(t._id)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
     </ion-item>
   </ion-list>
 

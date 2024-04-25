@@ -15,8 +15,8 @@ export class TransactionHistoryPage implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private router: Router, private utilService: UtilService,
     private toastController: ToastController) {
-      this.form = this.formBuilder.group({
-      });
+    this.form = this.formBuilder.group({
+    });
     debugger
     // Assuming you fetch transactions from somewhere (e.g., a service) and assign them to the transactions array
     this.fetchTransactions();
@@ -27,19 +27,30 @@ export class TransactionHistoryPage implements OnInit {
 
   fetchTransactions() {
     let reqBody = {
-     first: 0, 
-     rows :10
+      first: 0,
+      rows: 10
 
     };
-    this.utilService.callPostApi(reqBody, "subuser/transactionlist").subscribe(async result => {
+    this.utilService.callPostApi(reqBody, "transaction/transactionlist").subscribe(async result => {
       if (result.flag) {
         this.transactions = result.data;
         //this.router.navigate(['/dashboard/transactionhistory']);
-      } 
-        
       }
+
+    }
     )
 
+  }
+
+  async warningtoast() {
+    const toast = await this.toastController.create({
+      message: 'Transaction Deleted Successfully',
+      duration: 2000,
+      position: 'bottom',
+      //cssClass: 'warning-toast',
+      color: 'danger'
+    });
+    toast.present();
   }
 
   loadMoreTransactions(event: any) {
@@ -49,5 +60,13 @@ export class TransactionHistoryPage implements OnInit {
   }
   navigateToTransactionEntry() {
     this.router.navigate(['/dashboard/transactionentry']); // Replace '/transaction-entry' with the actual route path
+  }
+  deleteTransaction(transactionId: any) {
+    this.utilService.callDeleteApi(`transaction/transactionlist/${transactionId}`).subscribe(async result => {
+      if (result.flag) {
+        this.warningtoast();
+      }
+    }
+    )
   }
 }

@@ -28,6 +28,10 @@ export class UtilService {
     return this.http.get<any>(this.url + apiroute, params);
   }
 
+  callDeleteApi(apiroute: string): Observable<any> {
+    return this.http.delete<any>(this.url + apiroute);
+  }
+
   validateAllFormFields(formGroup: FormGroup) {
     //{1}
     Object.keys(formGroup.controls).forEach((field) => {
