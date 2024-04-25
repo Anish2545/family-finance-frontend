@@ -20,10 +20,10 @@
 
       </ion-avatar>
       <ion-label>
-        <h2>{{ transaction.date }}</h2>
+        <h2>{{ transaction.transactionDate }}</h2>
         <p>Amount: {{ transaction.amount }}</p>
-        <p>Type: {{ transaction.type }}</p>
-        <p>Category: {{ transaction.category }}</p>
+        <p>Type: {{ transaction.expenseCategory }}</p>
+        <p>Category: {{ transaction.isIncome }}</p>
       </ion-label>
     </ion-item>
   </ion-list>

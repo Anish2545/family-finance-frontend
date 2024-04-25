@@ -36,7 +36,7 @@ export class TransactionentryPage implements OnInit {
       this.utilService.callFormPostApi(reqBody, "transaction/addtransaction").subscribe(async result => {
         if (result.flag) {
           this.successtoast();
-          this.router.navigate(['/dashboard/transaction']);
+          this.router.navigate(['/dashboard/transactionhistory']);
         } else {
           this.warningtoast(); // Call the presentToast method to display the toast
         }

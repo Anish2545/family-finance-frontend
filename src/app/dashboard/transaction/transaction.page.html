@@ -17,20 +17,20 @@
 
   <!-- Main Content Area -->
   <ion-list>
-    <ion-item *ngFor="let user of items; let index">
-      <ion-avatar slot="start">
-        <img [src]="user.image" alt="User Image">
-      </ion-avatar>
+    <ion-item *ngFor="let user of subuser; let index">
+     
       <ion-label>
-        <h2>{{ user.title }}</h2>
-        <p>{{ user.subtitle }}</p>
+        <h2>Name:{{ user.name }}</h2>
+        <p>Relation:{{ user.relationToUser }}</p>
+        <p>Mobile:{{ user.mobileNo }}</p>
       </ion-label>
     </ion-item>
   </ion-list>
 
   <!-- Infinite Scroll -->
-  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
-    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+  <ion-infinite-scroll (ionInfinite)="loadMoreTransactions($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles"
+      loadingText="Loading more data..."></ion-infinite-scroll-content>
   </ion-infinite-scroll>
 
   <!-- Fab Button -->

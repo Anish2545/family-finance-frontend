@@ -1,33 +1,51 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UtilService } from 'src/app/util.service';
+import { ToastController } from '@ionic/angular';
+
 @Component({
   selector: 'app-transaction-history',
   templateUrl: './transactionhistory.page.html',
   styleUrls: ['./transactionhistory.page.scss'],
 })
-export class TransactionHistoryPage {
-  transactions: any[] = []; // Assuming transactions are stored in this array
+export class TransactionHistoryPage implements OnInit {
+  form: FormGroup; transactions: any;
+  ; // Assuming transactions are stored in this array
 
-  constructor(private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private utilService: UtilService,
+    private toastController: ToastController) {
+      this.form = this.formBuilder.group({
+      });
     debugger
     // Assuming you fetch transactions from somewhere (e.g., a service) and assign them to the transactions array
     this.fetchTransactions();
   }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   fetchTransactions() {
-    // Example of fetching transactions (replace with your actual data-fetching logic)
-    // Assuming transactions have properties: date, amount, type, category, and image
-    this.transactions = [
-      { date: '2024-04-17', amount: 50, type: 'Expense', category: 'Food'},
-      { date: '2024-04-16', amount: 100, type: 'Income', category: 'Salary' },
-      // Add more transactions as needed
-    ];
+    let reqBody = {
+     first: 0, 
+     rows :10
+
+    };
+    this.utilService.callPostApi(reqBody, "subuser/transactionlist").subscribe(async result => {
+      if (result.flag) {
+        this.transactions = result.data;
+        //this.router.navigate(['/dashboard/transactionhistory']);
+      } 
+        
+      }
+    )
+
   }
 
   loadMoreTransactions(event: any) {
     // Logic to load more transactions when scrolling (if applicable)
     // For example, fetch more transactions and push them into the transactions array
-    // Ensure to call event.target.complete() when done loading more data
+    // EnreqBody: { name: any; relationToUser: any; mobileNo: any; }, uri: stringname: any; relationToUser: any; mobileNo: any; }, uri: stringname: any; relationToUser: any; mobileNo: any; }, uri: stringname: any; relationToUser: any; mobileNo: any; }, uri: stringl event.target.complete() when done loading more data
   }
   navigateToTransactionEntry() {
     this.router.navigate(['/dashboard/transactionentry']); // Replace '/transaction-entry' with the actual route path
