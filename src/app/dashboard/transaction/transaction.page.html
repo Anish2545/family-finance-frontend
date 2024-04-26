@@ -17,13 +17,16 @@
 
   <!-- Main Content Area -->
   <ion-list>
-    <ion-item *ngFor="let user of subuser; let index">
+    <ion-item *ngFor="let u of subuser; let index">
      
       <ion-label>
-        <h2>Name : {{ user.name }}</h2>
-        <p>Relation : {{ user.relationToUser }}</p>
-        <p>Mobile : {{ user.mobileNo }}</p>
+        <h2>Name : {{ u.name }}</h2>
+        <p>Relation : {{ u.relationToUser }}</p>
+        <p>Mobile : {{ u.mobileNo }}</p>
       </ion-label>
+      <ion-button class="delete" (click)="deleteSubUser(u._id)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
     </ion-item>
   </ion-list>
 

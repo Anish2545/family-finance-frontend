@@ -41,6 +41,26 @@ export class TransactionPage {
        }
      )
   }
+
+  async warningtoast() {
+    const toast = await this.toastController.create({
+      message: 'SubUser Deleted Successfully',
+      duration: 2000,
+      position: 'bottom',
+      //cssClass: 'warning-toast',
+      color: 'danger'
+    });
+    toast.present();
+  }
+
+  deleteSubUser(subuserId:any){
+    this.utilService.callDeleteApi(`subuser/getsubuserlist/${subuserId}`).subscribe(async result => {
+      if (result.flag) {
+        this.warningtoast();
+      }
+    }
+    )
+  }
   loadMoreTransactions(event: any) {
     // Logic to load more transactions when scrolling (if applicable)
     // For example, fetch more transactions and push them into the transactions array

@@ -30,8 +30,7 @@ export class ProfilePage implements OnInit {
   };
 
   logout() {
-    // Implement your logout logic here
-    // For example, you might want to clear session data, navigate to the login page, etc.
+    
     console.log("Logging out...");
   }
 }

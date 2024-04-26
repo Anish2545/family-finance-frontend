@@ -21,6 +21,7 @@ export class TransactionHistoryPage implements OnInit {
     // Assuming you fetch transactions from somewhere (e.g., a service) and assign them to the transactions array
     this.fetchTransactions();
   }
+  
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
