@@ -12,9 +12,6 @@ const routes: Routes = [
     path: 'carousel',
     loadChildren: () => import('./carousel/carousel.module').then(m => m.CarouselPageModule)
   },
-
-
-
   {
     path: 'sign-up',
     loadChildren: () => import('./sign-up/sign-up.module').then(m => m.SignUpPageModule)

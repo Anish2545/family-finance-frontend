@@ -37,7 +37,7 @@ export class SubuserPage implements OnInit {
       this.utilService.callFormPostApi(reqBody, "subuser/addsubuser").subscribe(async result => {
         if (result.flag) {
           this.successtoast();
-          this.router.navigate(['/dashboard/subuser']);
+          this.router.navigate(['/dashboard/transaction']);
         } else {
           this.warningtoast(); // Call the presentToast method to display the toast
         }

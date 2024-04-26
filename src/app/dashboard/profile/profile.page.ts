@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UtilService } from 'src/app/util.service';
 import { ToastController } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
 
+const { Preferences } = Plugins;
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -34,6 +36,18 @@ export class ProfilePage implements OnInit {
     //   name: 'John Doe'
     // });
   };
+
+  async successtoast() {
+    const toast = await this.toastController.create({
+      message: 'Profile Updated',
+      duration: 2000,
+      position: 'bottom',
+      // cssClass: 'green-toast',
+      color: 'success'
+    });
+    toast.present();
+  }
+
   loadUserData() {
     // Simulate fetching user data from API
     // Replace this with actual API call to fetch user data
@@ -68,7 +82,7 @@ export class ProfilePage implements OnInit {
 
       this.utilService.callPostApi(reqBody, "user/updateprofile").subscribe(async result => {
         if (result.flag) {
-
+          this.successtoast();
           //this.router.navigate(['/lace/add-purchase', resp.data.purchaseId]);
         }
 
@@ -78,7 +92,9 @@ export class ProfilePage implements OnInit {
   }
 
   logout() {
-    
+    Preferences.remove({ key: 'access_token' });
+    Preferences.remove({ key: 'u' });
+    this.router.navigate(['/start/login']);
     console.log("Logging out...");
   }
 }

@@ -1,31 +1,20 @@
-<ion-header>
-  <ion-list-header class="ion-margin">
-    <ion-label>Subuser Account</ion-label>
-  </ion-list-header>
+<ion-header class="ion-no-border">
+  <ion-title mode="md">Sub user List</ion-title>
 </ion-header>
 
+
 <ion-content [fullscreen]="true">
-  <!-- Header -->
-  <div class="ion-text-center heading">
-    <img src="assets/moneyincome.svg" alt="Family Finance Image" style="max-width: 85%; height: auto;">
-  </div>
-
-  <!-- Subtitle -->
-  <ion-list-header>
-    <ion-label>Username List </ion-label>
-  </ion-list-header>
-
   <!-- Main Content Area -->
   <ion-list>
     <ion-item *ngFor="let u of subuser; let index">
-     
+
       <ion-label>
         <h2>Name : {{ u.name }}</h2>
         <p>Relation : {{ u.relationToUser }}</p>
         <p>Mobile : {{ u.mobileNo }}</p>
       </ion-label>
       <ion-button class="delete" (click)="deleteSubUser(u._id)">
-        <ion-icon name="trash"></ion-icon>
+        <ion-icon name="trash" class="trash"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>
@@ -37,7 +26,7 @@
   </ion-infinite-scroll>
 
   <!-- Fab Button -->
-  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="ion-padding">
     <ion-fab-button color="success" (click)="navigateToSubuserPage()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

@@ -23,7 +23,8 @@
         <p>Type : {{ t.expenseCategory }}</p>
         <p>Category : {{ t.isIncome }}</p>
       </ion-label>
-      <ion-button class="delete" (click)="deleteTransaction(t._id)">
+
+      <ion-button class="delete custom-size" color="danger" (click)="deleteTransaction(t._id)">
         <ion-icon name="trash"></ion-icon>
       </ion-button>
     </ion-item>
@@ -35,8 +36,7 @@
   </ion-infinite-scroll>
 
   <!-- Fab Button -->
-  <!-- Fab Button -->
-<ion-fab vertical="bottom" horizontal="center" slot="fixed">
+<ion-fab vertical="bottom" horizontal="end" slot="fixed" class="ion-padding">
   <ion-fab-button color="success" (click)="navigateToTransactionEntry()">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
