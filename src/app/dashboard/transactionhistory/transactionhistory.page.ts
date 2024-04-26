@@ -22,7 +22,7 @@ export class TransactionHistoryPage implements OnInit {
     this.fetchTransactions();
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
   }
 
   fetchTransactions() {
