@@ -80,7 +80,7 @@ export class LoginPage implements OnInit {
   onSubmitLoginForm() {
     if (this.form.valid) {
       this.otpVerificationMode = 'mobile';
-
+      
       let preFixMobileNo =
         '+91' + (this.form.value['phone'] ?? '').toString();
       firebase

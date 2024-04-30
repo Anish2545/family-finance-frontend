@@ -1,3 +1,21 @@
+ion-title {
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #ffffff;
+}
+
+.header-with-border {
+  border-bottom: 1px solid #ccc; /* Add border to the header */
+}
+
+.title-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Vertically center the title */
+}
 
 ion-content{
     background-color: #ffffff ;

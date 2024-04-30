@@ -12,6 +12,9 @@ ion-content {
   }
 }
 
+.inner-scroll{
+  --offset-top:0px;
+}
 
 ion-item-group .button {
   --background: #7ed957;

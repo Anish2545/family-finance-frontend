@@ -1,5 +1,5 @@
-<ion-header class="ion-no-border">
-  <ion-title mode="md">Sub user List</ion-title>
+<ion-header class="header-with-border">
+  <ion-title mode="md" class="tile-center">Sub User List</ion-title>
 </ion-header>
 
 
@@ -13,8 +13,8 @@
         <p>Relation : {{ u.relationToUser }}</p>
         <p>Mobile : {{ u.mobileNo }}</p>
       </ion-label>
-      <ion-button class="delete" (click)="deleteSubUser(u._id)">
-        <ion-icon name="trash" class="trash"></ion-icon>
+      <ion-button class="delete custom-size" color="danger" (click)="deleteSubUser(u._id)">
+        <ion-icon name="trash"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>
@@ -33,3 +33,4 @@
   </ion-fab>
 
 </ion-content>
+

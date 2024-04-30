@@ -1,6 +1,6 @@
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UtilService } from 'src/app/util.service';
 @Component({
@@ -8,21 +8,28 @@ import { UtilService } from 'src/app/util.service';
   templateUrl: './transactionentry.page.html',
   styleUrls: ['./transactionentry.page.scss'],
 })
-export class TransactionentryPage implements OnInit {
+export class TransactionentryPage {
   form: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private utilService: UtilService,
     private toastController: ToastController, private router: Router) {
     this.form = this.formBuilder.group({
-      category: [null, Validators.required], // category: income/expense
+      category: [null,Validators.required], // category: income/expense
       transactionDate: [null, Validators.required], // Date of Transaction
       amount: [null, Validators.required], // Amount
-      expensecategory: [null, Validators.required], // Title of Transaction
+      expensecategory: [{ value: 'income', disabled: true }, Validators.required], // Title of Transaction
+    });
+    this.form.get('category')?.valueChanges.subscribe(value => {
+      const expenseCategoryControl = this.form.get('expensecategory');
+      if (value === 'expense') {
+        expenseCategoryControl?.enable();
+      } else {
+        expenseCategoryControl?.setValue('income');
+        expenseCategoryControl?.disable();
+      }
     });
   }
 
-  ngOnInit() {
-  }
 
   submitForm() {
     if (this.form.valid) {
@@ -36,7 +43,7 @@ export class TransactionentryPage implements OnInit {
       this.utilService.callFormPostApi(reqBody, "transaction/addtransaction").subscribe(async result => {
         if (result.flag) {
           this.successtoast();
-          this.router.navigate(['/dashboard/transactionhistory']);
+          this.router.navigate(['dashboard/transactionhistory']);
         } else {
           this.warningtoast(); // Call the presentToast method to display the toast
         }
@@ -50,6 +57,8 @@ export class TransactionentryPage implements OnInit {
       this.markFormGroupTouched(this.form);
     }
   }
+
+
   async warningtoast() {
     const toast = await this.toastController.create({
       message: 'Error baby',
@@ -60,6 +69,7 @@ export class TransactionentryPage implements OnInit {
     });
     toast.present();
   }
+
   async successtoast() {
     const toast = await this.toastController.create({
       message: 'Entry Added',
