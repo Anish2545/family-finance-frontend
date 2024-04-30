@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { DashboardPage } from './dashboard.page';
 
 const routes: Routes = [
@@ -45,9 +44,13 @@ const routes: Routes = [
       {
         path: 'split-travel',
         loadChildren: () => import('./split-travel/split-travel.module').then(m => m.SplitTravelPageModule)
+      },
+      {
+        path: 'split-travel-list',
+        loadChildren: () => import('./split-travel-list/split-travel-list.module').then( m => m.SplitTravelListPageModule)
       }
     ]
-  }
+  },
 ];
 
 

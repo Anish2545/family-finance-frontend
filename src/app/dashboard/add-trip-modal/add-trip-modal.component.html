@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Trip</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true" [disabled]="addTripForm.invalid">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="addTripForm">
+    <ion-item>
+      <ion-input formControlName="title" type="text" label="Trip Title" labelPlacement="stacked"
+        placeholder="Trip Title"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="addTripForm.get('title')?.invalid && addTripForm.get('title')?.touched">
+      <ion-text color="danger">Trip title is required.</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-input formControlName="date" type="date" label="Date" labelPlacement="stacked"
+        placeholder="Date"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="addTripForm.get('date')?.invalid && addTripForm.get('date')?.touched">
+      <ion-text color="danger">Date is required.</ion-text>
+    </ion-item>
+  </form>
+</ion-content>
