@@ -52,7 +52,7 @@ export class AddTripModalComponent {
 
   async warningtoast() {
     const toast = await this.toastController.create({
-      message: 'Error baby',
+      message: 'Error',
       duration: 2000,
       position: 'bottom',
       //cssClass: 'warning-toast',

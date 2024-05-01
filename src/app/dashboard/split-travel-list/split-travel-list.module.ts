@@ -8,6 +8,7 @@ import { SplitTravelListPageRoutingModule } from './split-travel-list-routing.mo
 
 import { SplitTravelListPage } from './split-travel-list.page';
 import { AddTripModalComponent } from '../add-trip-modal/add-trip-modal.component';
+import { AddExpenseModalComponent } from '../add-expense-modal/add-expense-modal.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { AddTripModalComponent } from '../add-trip-modal/add-trip-modal.componen
     IonicModule,
     SplitTravelListPageRoutingModule
   ],
-  declarations: [SplitTravelListPage,AddTripModalComponent],
+  declarations: [SplitTravelListPage,AddTripModalComponent,AddExpenseModalComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SplitTravelListPageModule {}

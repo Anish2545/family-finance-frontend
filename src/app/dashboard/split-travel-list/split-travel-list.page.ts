@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { Router } from '@angular/router';
 import { AddTripModalComponent } from '../add-trip-modal/add-trip-modal.component';
+import { AddExpenseModalComponent } from "../add-expense-modal/add-expense-modal.component";
 import { UtilService } from 'src/app/util.service';
 
 
@@ -21,6 +22,7 @@ export class SplitTravelListPage implements OnInit {
   message: string | undefined;
   date: any;
   addTripForm!: FormGroup;
+  addExpenseForm!: FormGroup;
 
   trips: any;
 
@@ -29,14 +31,29 @@ export class SplitTravelListPage implements OnInit {
       title: ['', Validators.required],
       date: ['', Validators.required]
     });
-    this.fetchTrips();
+    this.addExpenseForm=this.formBuilder.group({
+      amount: ['', Validators.required],
+      description:['',Validators.required]
+    })
+    this.loadMoreTrips(this.addTripForm.value);
   }
 
-  async openModal() {
+  async opentripModal() {
     const modal = await this.modalController.create({
       component: AddTripModalComponent,
       componentProps: {
         addTripForm: this.addTripForm
+      }
+    });
+    await modal.present();
+  }
+
+  async openexpenseModal(tripId: any) { 
+    const modal = await this.modalController.create({
+      component: AddExpenseModalComponent,
+      componentProps: {
+        addExpenseForm: this.addExpenseForm,
+        id: tripId 
       }
     });
     await modal.present();
@@ -63,6 +80,7 @@ export class SplitTravelListPage implements OnInit {
   }
 
   loadMoreTrips(event: any) {
+    this.fetchTrips();
     // Logic to load more transactions when scrolling (if applicable)
     // For example, fetch more transactions and push them into the transactions array
     // EnreqBody: { name: any; relationToUser: any; mobileNo: any; }, uri: stringname: any; relationToUser: any; mobileNo: any; }, uri: stringname: any; relationToUser: any; mobileNo: any; }, uri: stringname: any; relationToUser: any; mobileNo: any; }, uri: stringl event.target.complete() when done loading more data

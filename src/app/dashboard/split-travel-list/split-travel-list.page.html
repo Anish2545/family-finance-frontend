@@ -5,13 +5,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
   <ion-card *ngFor="let t of trips">
-    <ion-card-header>
-      <ion-card-title>
-        {{ t.title }}
-      </ion-card-title>
-    </ion-card-header>
+    <ion-item>
+      <ion-card-header>
+        <ion-card-title>
+          {{ t.title }}
+        </ion-card-title>
+      </ion-card-header>
+      
+      <ion-button class="edit" fill="clear" slot="end" (click)="openexpenseModal(t._id)">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
 
     <ion-card-content>
       {{ t.date }}
@@ -25,7 +30,7 @@
 
   <!-- Fab Button -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="ion-padding">
-    <ion-fab-button color="success" (click)="openModal()">
+    <ion-fab-button color="success" (click)="opentripModal()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
