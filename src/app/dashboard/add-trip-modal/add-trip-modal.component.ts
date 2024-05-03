@@ -22,6 +22,8 @@ export class AddTripModalComponent {
     });
    }
 
+   
+
   cancel() {
     this.modalController.dismiss(null, 'cancel');
   }
@@ -36,6 +38,7 @@ export class AddTripModalComponent {
       if (result.flag) {
         this.successtoast();
         this.modalController.dismiss(this.addTripForm.value, 'confirm');
+        
       } else {
         this.warningtoast(); // Call the presentToast method to display the toast
       }

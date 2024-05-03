@@ -1,52 +1,55 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilService } from 'src/app/util.service';
 import { ModalController } from '@ionic/angular';
-import { IonInfiniteScrollCustomEvent } from '@ionic/core';
 
 @Component({
   selector: 'app-add-expense-modal',
   templateUrl: './add-expense-modal.component.html',
   styleUrls: ['./add-expense-modal.component.scss'],
 })
-export class AddExpenseModalComponent {
+export class AddExpenseModalComponent implements OnInit {
   @Input() addExpenseForm!: FormGroup;
-  @Input() id: any;
+  @Input() tripId: any;
   markFormGroupTouched: any;
   tripexpense: any;
-  tripid: any;
-  constructor(private formBuilder: FormBuilder, private modalController: ModalController, private actRoute: ActivatedRoute,private utilService: UtilService, private toastController: ToastController, private router: Router) {
+  trip: any;
+  totalAmount: any;
+  constructor(private formBuilder: FormBuilder, private modalController: ModalController, private actRoute: ActivatedRoute, private utilService: UtilService, private toastController: ToastController, private router: Router) {
     this.addExpenseForm = this.formBuilder.group({
       amount: ['', Validators.required],
       description: ['', Validators.required]
     })
-    this.tripid = this.actRoute.snapshot.params['tripid']
-    this.fetchTrips();
   }
+
+  ngOnInit() {
+    console.log("Trip ID:", this.tripId);
+  }
+
   cancel() {
     // this.modalController.dismiss(null, 'cancel');
     this.addExpenseForm.reset();
   }
 
-  back(){
+  back() {
     this.modalController.dismiss(null, 'back');
   }
-    
+
   confirm() {
-    debugger;
     if (this.addExpenseForm.valid) {
       let reqBody = {
         amount: this.addExpenseForm.controls['amount'].value,
         description: this.addExpenseForm.controls['description'].value,
-        tripId: this.id,
+        tripId: this.tripId,
+        totalAmount:this.totalAmount,
       };
       this.utilService.callFormPostApi(reqBody, 'tripexpenseamount/addtripexpense').subscribe(
         async (result: any) => {
           if (result.flag) {
             this.successtoast();
-            this.loadMoreTrips(result.flag);
+            await this.modalController.dismiss(this.addExpenseForm.value, 'confirm');
           } else {
             this.warningtoast();
           }
@@ -82,24 +85,6 @@ export class AddExpenseModalComponent {
     });
     toast.present();
   }
-
-  fetchTrips() { 
-    console.log(this.tripid);
-    this.utilService.callGetApi("tripexpenseamount/gettriplistexpense/${this.tripid}").subscribe(async result => {
-      if (result.flag) {
-        this.tripexpense = result.data;
-        //this.router.navigate(['/dashboard/transactionhistory']);
-      }
-
-    }
-    )
-
-  }
-
-  loadMoreTrips(event: any) {
-    this.fetchTrips();
-  }
-
 }
 
 

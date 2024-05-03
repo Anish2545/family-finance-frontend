@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>View Expense</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">Back <div>
+        </div></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let t of tripexpense">
+    <ion-item  style="display: flex; flex-direction: column;">
+      <ion-card-header>
+        <ion-card-title>
+          {{ t.description }}
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="amount" slot="end" style="margin-top: auto;">
+        ₹ {{ t.amount }}
+      </ion-card-content>
+    </ion-item>
+
+  </ion-card>
+
+  <ion-fab slot="fixed" horizontal="end" vertical="bottom" class="ion-padding">
+    <ion-fab-button color="success">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="openExpenseModal(tripId)">
+        <ion-icon name="cash-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="people-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+</ion-content>

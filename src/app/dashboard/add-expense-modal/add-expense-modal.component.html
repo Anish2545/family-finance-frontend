@@ -3,18 +3,19 @@
     <ion-title>Add Expense</ion-title>
 
     <ion-buttons slot="start">
-      <ion-button (click)="back()">Back</ion-button>
+      <ion-button (click)="back()">Back <div>
+        </div></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <form [formGroup]="addExpenseForm">
+  <form [formGroup]="addExpenseForm" id="expenseform">
     <ion-item>
       <ion-input formControlName="amount" type="number" label="Expense Amount" labelPlacement="stacked"
         placeholder="Expense Amount"></ion-input>
     </ion-item>
-    <ion-item *ngIf="addExpenseForm.get('amount')?.invalid && addExpenseForm.get('amount')?.touched">
+    <ion-item lines="none" *ngIf="addExpenseForm.get('amount')?.invalid && addExpenseForm.get('amount')?.touched">
       <ion-text color="danger">Expense Amount is required.</ion-text>
     </ion-item>
     <br><br>
@@ -22,7 +23,8 @@
       <ion-input formControlName="description" type="text" label="Expense Description" labelPlacement="stacked"
         placeholder="Expense Description"></ion-input>
     </ion-item>
-    <ion-item *ngIf="addExpenseForm.get('description')?.invalid && addExpenseForm.get('description')?.touched">
+    <ion-item lines="none"
+      *ngIf="addExpenseForm.get('description')?.invalid && addExpenseForm.get('description')?.touched">
       <ion-text color="danger">Expense Description is required.</ion-text>
     </ion-item>
     <br><br><br>
@@ -36,25 +38,4 @@
       </div>
     </ion-item>
   </form>
-
-
-  <ion-card *ngFor="let t of tripexpense">
-    <ion-item>
-      <ion-card-header>
-        <ion-card-title>
-          {{ t.description }}
-        </ion-card-title>
-      </ion-card-header>
-    </ion-item>
-
-    <ion-card-content>
-      {{ t.amount }}
-    </ion-card-content>
-  </ion-card>
-
-  <ion-infinite-scroll (ionInfinite)="loadMoreTrips($event)">
-    <ion-infinite-scroll-content loadingSpinner="bubbles"
-      loadingText="Loading more data..."></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-
 </ion-content>

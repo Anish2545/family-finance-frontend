@@ -12,14 +12,20 @@
           {{ t.title }}
         </ion-card-title>
       </ion-card-header>
-      
-      <ion-button class="edit" fill="clear" slot="end" (click)="openexpenseModal(t._id)">
+
+      <ion-button class="edit" fill="clear" slot="end" (click)="viewtripexpenseModal(t._id)">
         <ion-icon name="create-outline"></ion-icon>
       </ion-button>
     </ion-item>
 
     <ion-card-content>
-      {{ t.date }}
+      <ion-item slot="start">
+        {{ t.date }}
+      </ion-item>
+
+      <ion-item slot="end">
+       Total Expense :  {{ t.totalAmount }}
+      </ion-item>
     </ion-card-content>
   </ion-card>
 

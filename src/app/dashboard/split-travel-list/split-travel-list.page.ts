@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { AddTripModalComponent } from '../add-trip-modal/add-trip-modal.component';
 import { AddExpenseModalComponent } from "../add-expense-modal/add-expense-modal.component";
 import { UtilService } from 'src/app/util.service';
+import { ViewTripExpenseModalComponent } from '../view-trip-expense-modal/view-trip-expense-modal.component';
 
 
 @Component({
@@ -23,19 +24,21 @@ export class SplitTravelListPage implements OnInit {
   date: any;
   addTripForm!: FormGroup;
   addExpenseForm!: FormGroup;
-
+  tripIds: any;
+  totalAmount:any;
   trips: any;
 
-  constructor(private modalController: ModalController,private utilService: UtilService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private modalController: ModalController, private utilService: UtilService, private formBuilder: FormBuilder, private router: Router) {
     this.addTripForm = this.formBuilder.group({
       title: ['', Validators.required],
       date: ['', Validators.required]
     });
-    this.addExpenseForm=this.formBuilder.group({
+    this.addExpenseForm = this.formBuilder.group({
       amount: ['', Validators.required],
-      description:['',Validators.required]
+      description: ['', Validators.required]
     })
-    this.loadMoreTrips(this.addTripForm.value);
+    this.fetchTrips();
+    this.totalamount();
   }
 
   async opentripModal() {
@@ -48,16 +51,37 @@ export class SplitTravelListPage implements OnInit {
     await modal.present();
   }
 
-  async openexpenseModal(tripId: any) { 
+  async viewtripexpenseModal(tripId: any) {
     const modal = await this.modalController.create({
-      component: AddExpenseModalComponent,
+      component: ViewTripExpenseModalComponent,
       componentProps: {
-        addExpenseForm: this.addExpenseForm,
-        id: tripId 
+        tripId: tripId,
       }
     });
     await modal.present();
   }
+
+  // async openexpenseModal(tripId: any) { 
+  //   const modal = await this.modalController.create({
+  //     component: AddExpenseModalComponent,
+  //     componentProps: {
+  //       addExpenseForm: this.addExpenseForm,
+  //       id: tripId,
+  //     }
+  //   });
+  //   await modal.present();
+  // }
+
+  // async openexpenseModal(tripId: any) {
+  //   const modal = await this.modalController.create({
+  //     component: AddExpenseModalComponent,
+  //     componentProps: {
+  //       addExpenseForm: this.addExpenseForm,
+  //       tripId: tripId, // Pass tripId as component prop
+  //     }
+  //   });
+  //   await modal.present();
+  // }
 
   ngOnInit() {
   }
@@ -73,11 +97,20 @@ export class SplitTravelListPage implements OnInit {
         this.trips = result.data;
         //this.router.navigate(['/dashboard/transactionhistory']);
       }
-
-    }
-    )
-
+    })
   }
+
+  totalamount(){
+    let reqBody = {
+      totalAmount:this.totalAmount
+    }
+    this.utilService.callPostApi(reqBody,'tripexpenseamount/addtripexpense').subscribe(async result =>{
+      if(result.flag){
+        this.totalAmount=result.data;
+      }
+    })
+  }
+
 
   loadMoreTrips(event: any) {
     this.fetchTrips();

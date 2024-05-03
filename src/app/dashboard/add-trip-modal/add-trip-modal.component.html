@@ -16,7 +16,7 @@
       <ion-input formControlName="title" type="text" label="Trip Title" labelPlacement="stacked"
         placeholder="Trip Title"></ion-input>
     </ion-item>
-    <ion-item *ngIf="addTripForm.get('title')?.invalid && addTripForm.get('title')?.touched">
+    <ion-item lines="none" *ngIf="addTripForm.get('title')?.invalid && addTripForm.get('title')?.touched">
       <ion-text color="danger">Trip title is required.</ion-text>
     </ion-item>
 
@@ -24,7 +24,7 @@
       <ion-input formControlName="date" type="date" label="Date" labelPlacement="stacked"
         placeholder="Date"></ion-input>
     </ion-item>
-    <ion-item *ngIf="addTripForm.get('date')?.invalid && addTripForm.get('date')?.touched">
+    <ion-item lines="none" *ngIf="addTripForm.get('date')?.invalid && addTripForm.get('date')?.touched">
       <ion-text color="danger">Date is required.</ion-text>
     </ion-item>
   </form>
