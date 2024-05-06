@@ -1,6 +1,6 @@
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonModal } from '@ionic/angular';
+import { IonModal, ToastController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OverlayEventDetail } from '@ionic/core/components';
@@ -24,7 +24,6 @@ export class SplitTravelListPage implements OnInit {
   date: any;
   addTripForm!: FormGroup;
   addExpenseForm!: FormGroup;
-  tripIds: any;
   totalAmount:any;
   trips: any;
 
@@ -51,11 +50,12 @@ export class SplitTravelListPage implements OnInit {
     await modal.present();
   }
 
-  async viewtripexpenseModal(tripId: any) {
+  async viewtripexpenseModal(tripId: any,title:any) {
     const modal = await this.modalController.create({
       component: ViewTripExpenseModalComponent,
       componentProps: {
         tripId: tripId,
+        title:title,
       }
     });
     await modal.present();
@@ -102,7 +102,7 @@ export class SplitTravelListPage implements OnInit {
 
   totalamount(){
     let reqBody = {
-      totalAmount:this.totalAmount
+      totalAmount:this.totalAmount,
     }
     this.utilService.callPostApi(reqBody,'tripexpenseamount/addtripexpense').subscribe(async result =>{
       if(result.flag){
@@ -118,4 +118,5 @@ export class SplitTravelListPage implements OnInit {
     // For example, fetch more transactions and push them into the transactions array
     // EnreqBody: { name: any; relationToUser: any; mobileNo: any; }, uri: stringname: any; relationToUser: any; mobileNo: any; }, uri: stringname: any; relationToUser: any; mobileNo: any; }, uri: stringname: any; relationToUser: any; mobileNo: any; }, uri: stringl event.target.complete() when done loading more data
   }
+
 }

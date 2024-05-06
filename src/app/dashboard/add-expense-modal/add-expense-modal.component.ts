@@ -43,7 +43,7 @@ export class AddExpenseModalComponent implements OnInit {
         amount: this.addExpenseForm.controls['amount'].value,
         description: this.addExpenseForm.controls['description'].value,
         tripId: this.tripId,
-        totalAmount:this.totalAmount,
+        totalAmount:this.totalAmount
       };
       this.utilService.callFormPostApi(reqBody, 'tripexpenseamount/addtripexpense').subscribe(
         async (result: any) => {

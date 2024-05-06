@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>View Expense</ion-title>
+    <ion-title>{{title}}</ion-title>
 
     <ion-buttons slot="start">
       <ion-button (click)="back()">Back <div>
@@ -11,17 +11,27 @@
 
 <ion-content>
   <ion-card *ngFor="let t of tripexpense">
-    <ion-item  style="display: flex; flex-direction: column;">
-      <ion-card-header>
-        <ion-card-title>
-          {{ t.description }}
-        </ion-card-title>
-      </ion-card-header>
-      <ion-card-content class="amount" slot="end" style="margin-top: auto;">
+    <ion-card-header class="ion-no-border">
+      <ion-card-title>
+        {{ t.description }}
+      </ion-card-title>
+    </ion-card-header>
+    <!-- End: Description -->
+    
+    <ion-item style="display: flex; flex-direction: column;">
+      <!-- Space -->
+      <div style="margin-top: 16px;"></div>
+
+      <!-- Expense Amount -->
+      <ion-card-content class="amount ion-no-border">
         ₹ {{ t.amount }}
       </ion-card-content>
-    </ion-item>
 
+      <!-- Delete Button -->
+      <ion-button class="delete custom-size" color="danger" slot="end" (click)="deleteExpense(t._id)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
   </ion-card>
 
   <ion-fab slot="fixed" horizontal="end" vertical="bottom" class="ion-padding">
@@ -32,7 +42,7 @@
       <ion-fab-button (click)="openExpenseModal(tripId)">
         <ion-icon name="cash-outline"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button>
+      <ion-fab-button (click)="openPeopleModal(tripId)">
         <ion-icon name="people-outline"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
