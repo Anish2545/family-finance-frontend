@@ -4,7 +4,7 @@ ion-content {
     .heading {
       font-size: 32px;
       font-weight: bold;
-      font-family: 'Ubuntu', sans-serif;
+      font-family: "Ubuntu", sans-serif;
       width: 245px;
       height: 58px;
       white-space: nowrap; /* Ensures the heading remains in one line */
@@ -12,8 +12,8 @@ ion-content {
   }
 }
 
-.inner-scroll{
-  --offset-top:0px;
+.inner-scroll {
+  --offset-top: 0px;
 }
 
 ion-item-group .button {
@@ -31,3 +31,47 @@ ion-item-group .button {
   color: #7ed957;
 }
 
+.hed {
+  margin: 5rem 1rem 1rem 1rem;
+}
+
+.head {
+  color: gray;
+  font-size: 31px;
+  font-weight: 600;
+}
+
+.sub-head {
+  color: #979797;
+  font-size: 19px;
+}
+
+.login-otp {
+  position: relative;
+  top: 20%;
+}
+
+.otp-head {
+  font-size: 23px;
+  text-align: center;
+  font-weight: 600;
+  color: #5b5b5b;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+}
+
+.otp-sub-title {
+  text-align: center;
+  color: #5d5d5d;
+  font-size: 16px;
+  margin: 0.5rem 0rem 1rem 0rem;
+  font-weight: 500;
+}
+
+:host ::ng-deep {
+  .otp-input {
+    width: 40px !important;
+    font-size: 20px !important;
+    height: 40px !important;
+  }
+}

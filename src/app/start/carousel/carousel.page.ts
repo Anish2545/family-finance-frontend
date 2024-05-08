@@ -10,11 +10,16 @@ const { Preferences } = Plugins;
   styleUrls: ['./carousel.page.scss'],
 })
 export class CarouselPage implements OnInit {
+  onNextBtn = 0;
 
   constructor(private router: Router) { }
 
-   ngOnInit() {
-   this.initializeSwiper() ;
+  ngOnInit() {
+    this.initializeSwiper();
+  }
+
+  onNextBtn1() {
+    this.onNextBtn = 1;
   }
 
   initializeSwiper() {
@@ -32,4 +37,7 @@ export class CarouselPage implements OnInit {
     this.router.navigateByUrl('/start/login');
   }
 
+  onSkip() {
+    this.router.navigateByUrl('/start/login');
+  }
 }

@@ -1,40 +1,42 @@
 <ion-content [fullscreen]="true">
   <swiper-container #swiper pagination="true" class="slides-bullet">
     <swiper-slide>
-      <div class="page" id="1">
+      <div class="page">
         <div class="image">
-          <img src="../../../assets/carousel/storyset1.svg" alt="storyset1" />
+          <img src="assets/carousel/storyset1.svg" alt="storyset1" />
         </div>
         <div class="content">
           <div class="text">
-            <h3 class="header">Split Travel Expenditure:</h3>
+            <h3 class="header">Split Travel Expenditure</h3>
             <p>
-              Effortlessly divide travel costs among all the companions, ensuring fairness. Input expenses, allocate shares, and simplify group budgeting for seamless adventures.
+              Effortlessly divide travel costs among all the companions, ensuring fairness. Input expenses, allocate
+              shares, and simplify group budgeting for seamless adventures.
             </p>
           </div>
           <div class="buttons">
-            <a href="#" class="skip">SKIP</a>
-            <a href="#" class="next">NEXT</a>
+            <a class="skip" (click)="onSkip()"></a>
+            <a class="next" (click)="onSkip()">SKIP</a>
           </div>
         </div>
       </div>
     </swiper-slide>
 
     <swiper-slide>
-      <div class="page" id="2">
+      <div class="page">
         <div class="image">
-          <img src="../../../assets/carousel/storyset2.svg" alt="storyset2" />
+          <img src="assets/carousel/storyset2.svg" alt="storyset2" />
         </div>
         <div class="content">
           <div class="text">
-            <h3 class="header">View Monthly Income Expense Chart:</h3>
+            <h3 class="header">View Income Expense Chart</h3>
             <p>
-              Visualize income and expenses in a monthly chart for quick financial insights. Monitor spending and earnings to stay on budget easily.
+              Visualize income and expenses in a monthly chart for quick financial insights. Monitor spending and
+              earnings to stay on budget easily.
             </p>
           </div>
           <div class="buttons">
-            <a href="#" class="skip">SKIP</a>
-            <a href="#" class="next">NEXT</a>
+            <a class="skip" (click)="onSkip()"></a>
+            <a class="next" (click)="onSkip()">SKIP</a>
           </div>
         </div>
       </div>
@@ -43,17 +45,19 @@
     <swiper-slide>
       <div class="page" id="3">
         <div class="image">
-          <img src="../../../assets/carousel/storyset3.svg" alt="storyset3" />
+          <img src="assets/carousel/storyset3.svg" alt="storyset3" />
         </div>
         <div class="content">
           <div class="text">
             <h3 class="header">Set Budget Alert:</h3>
             <p>
-              Stay on track with customizable alerts. Receive notifications when approaching or exceeding budget limits, ensuring financial goals are met effortlessly.
+              Stay on track with customizable alerts. Receive notifications when approaching or exceeding budget limits,
+              ensuring financial goals are met effortlessly.
             </p>
           </div>
           <div class="buttons">
-            <ion-button shape="round" expand="block" class="button" (click)="handleGetStarted()" >Let's Get Started Here</ion-button>
+            <ion-button shape="round" expand="block" class="button" (click)="handleGetStarted()">Let's Get Started
+              Here</ion-button>
           </div>
         </div>
       </div>

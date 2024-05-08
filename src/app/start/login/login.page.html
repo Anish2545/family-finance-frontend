@@ -1,17 +1,20 @@
-<div id="sign-in-button"></div>
-
-<ion-content class="ion-padding" [fullscreen]="true">
+<ion-content class="ion-padding" *ngIf="isEnterMobileNo">
   <div class="container">
-    <h1 class="heading" style="color: #959595; margin-top: 20px;">
+    <!-- <h1 class="heading" style="color: #959595; margin-top: 20px;">
       <span style="font-size: 32px; font-weight: bold">Welcome back!!</span><br>
       <span style="font-size: 20px; font-weight: bold">login yourself</span>
-    </h1>
-    <div
-      style="position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
-      <!-- Image -->
-      <img src="/assets/mobile.svg" alt="Your Image" style="width: 100%; height: auto; margin-bottom: 20px;">
+    </h1> -->
+    <div class="hed">
+      <h1 class="head">Welcome back.!!</h1>
+      <span class="sub-head">Login yourself</span>
+    </div>
+    <div style="position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      height: 100%;">
 
-      <ion-item-group class="ion-margin-horizontal ion-margin-bottom">
+      <!-- Image -->
+      <img src="assets/mobile.svg" alt="Your Image" style="width: 100%; height: auto; margin-bottom: 20px;">
+
+      <ion-item-group class="ion-margin-horizontal ion-margin-bottom" style="width: 100%;">
         <form [formGroup]="form" (ngSubmit)="onSubmitLoginForm()">
           <!-- Inputs -->
           <div class="ion-margin-vertical" style="width: 100%; max-width: 350px;">
@@ -33,8 +36,11 @@
 
           <ion-item lines="none" class="ion-padding-top ion-no-border">
             <div style="display: flex; justify-content: center; width: 100%; padding-top:0px">
-              <ion-button shape="round" expand="block" class="button" (click)="logIn()" type="ngSubmit"
-                (click)="openOTPVerification()" *ngIf="form.valid">Verify OTP</ion-button>
+              <ion-button shape="round" expand="block" class="button" (click)="logIn(); openOTPVerification()"
+                type="ngSubmit" *ngIf="form.valid">Verify OTP</ion-button>
+              <ion-button shape="round" *ngIf="!form.valid" expand="block" class="button" type="ngSubmit"
+                [disabled]="!form.valid">Verify
+                OTP</ion-button>
             </div>
           </ion-item>
         </form>
@@ -45,24 +51,27 @@
 
 <!-- OTP Verification Section -->
 <ion-content *ngIf="isOTPVerification" class="ion-padding" [fullscreen]="true">
-  <div class="container">
-    <div class="container" id="auth">
-      <!-- Image -->
-      <img src="assets\enterotp.png" alt="Image" class="center-image">
+  <div class="container login-otp" id="auth">
+    <!-- Image -->
+    <img src="assets\enterotp.png" alt="Image" class="center-image">
 
-      <!-- Text below Textbox -->
-      <div class="text-below-input">
-        <p class="text-bold-italic">Enter the OTP code</p>
-        <p class="text-regular">Enter the code sent on your mobile number</p>
-      </div>
+    <!-- Text below Textbox -->
+    <div class="text-below-input">
+      <p class="otp-head">Enter the OTP code</p>
+      <p class="otp-sub-title">Enter the code sent on your mobile number</p>
+    </div>
 
-      <!-- OTP Input using ng-otp-input -->
-      <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:6}"></ng-otp-input>
+    <!-- OTP Input using ng-otp-input -->
+    <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:6}"
+      style="text-align: center;"></ng-otp-input>
 
-      <!-- Button -->
-      <div style="display: flex; justify-content: center;">
-        <ion-button expand="block" style="margin-top: 20px; max-width: 350px; height: 59px; --background: #7ED957; --border-radius: 50px;" (click)="verifyOTP()" type="ngSubmit">Verify</ion-button>
-      </div>
+    <!-- Button -->
+    <div style="display: flex; justify-content: center;">
+      <ion-button expand="block"
+        style="margin-top: 20px; width: 85%; height: 52px; --background: #7ED957; --border-radius: 50px;"
+        (click)="verifyOTP()" type="ngSubmit">Verify</ion-button>
     </div>
   </div>
 </ion-content>
+
+<div id="sign-in-button"></div>
