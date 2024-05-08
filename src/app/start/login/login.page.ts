@@ -23,10 +23,12 @@ export class LoginPage implements OnInit {
 
   form!: FormGroup;
   type: boolean = true;
+  isEnterMobileNo: boolean = true;
   isOTPVerification: boolean = false;
 
   // Implement openOTPVerification() method to set isOTPVerification to true
   openOTPVerification() {
+    this.isEnterMobileNo = false
     this.isOTPVerification = true;
   }
 
@@ -80,7 +82,7 @@ export class LoginPage implements OnInit {
   onSubmitLoginForm() {
     if (this.form.valid) {
       this.otpVerificationMode = 'mobile';
-      
+
       let preFixMobileNo =
         '+91' + (this.form.value['phone'] ?? '').toString();
       firebase
