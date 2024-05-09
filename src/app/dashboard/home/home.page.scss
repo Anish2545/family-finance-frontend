@@ -31,15 +31,17 @@ ion-content {
     .balance {
         background-color: #595959;
         width: auto;
-        height: 100px;
+        height: auto;
+        border-radius: 25px;
 
         ion-card-title {
-            color: #ffffff
+            color: #ffffff;
         }
 
         ion-card-content {
-            color: #ffffff
-        }
+            color: #ffffff;
+            font-size: 23px;
+            font-weight: bold;        }
     }
 
     .income {

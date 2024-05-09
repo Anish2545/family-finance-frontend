@@ -25,20 +25,76 @@
     <ion-card-header>
       <ion-card-title>Total Balance</ion-card-title>
     </ion-card-header>
-    <ion-card-content> Card Content </ion-card-content>
+    <ion-card-content class="balanceAmount"> ₹ {{balanceAmount}} </ion-card-content>
   </ion-card>
 
-  <ion-card class="income">
+
+  <ion-accordion-group expand="inset">
+    <ion-accordion value="first">
+      <ion-item slot="header" color="grey">
+        <ion-label>Select Month And Year</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content"> 
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-list>
+                <ion-item>
+                  <ion-select aria-label="Month" value="january" (ionChange)="ongetMY($event)">
+                    <ion-select-option value="january">January</ion-select-option>
+                    <ion-select-option value="february">February</ion-select-option>
+                    <ion-select-option value="march">March</ion-select-option>
+                    <ion-select-option value="april">April</ion-select-option>
+                    <ion-select-option value="may">May</ion-select-option>
+                    <ion-select-option value="june">June</ion-select-option>
+                    <ion-select-option value="july">July</ion-select-option>
+                    <ion-select-option value="august">August</ion-select-option>
+                    <ion-select-option value="september">September</ion-select-option>
+                    <ion-select-option value="october">October</ion-select-option>
+                    <ion-select-option value="november">November</ion-select-option>
+                    <ion-select-option value="december">December</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>  
+            </ion-col>
+            <ion-col> 
+              <ion-list>
+                <ion-item>
+                  <ion-select aria-label="Year" value="2024" (ionChange)="ongetY($event)">
+                    <ion-select-option value="2021">2021</ion-select-option>
+                    <ion-select-option value="2022">2022</ion-select-option>
+                    <ion-select-option value="2023">2023</ion-select-option>
+                    <ion-select-option value="2024">2024</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+            </ion-col> 
+          </ion-row>
+        </ion-grid>
+        <!-- <ion-datetime #datetime display-format="MM/YYYY" [(ngModel)]="myDate" presentation="month-year" (ionChange)="ongetMY($event)">
+      </ion-datetime> --> 
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+
+  <ion-card class="monthlybalance">
     <ion-card-header>
-      <ion-card-title>Total Income</ion-card-title>
+      <ion-card-title>Monthly Balance </ion-card-title>
     </ion-card-header>
-    <ion-card-content> {{totalincome}} </ion-card-content>
+    <ion-card-content> ₹ {{monthlybalance}} </ion-card-content>
   </ion-card>
 
-  <ion-card class="expense">
+  <ion-card class="monthlyincome">
     <ion-card-header>
-      <ion-card-title>Total Expense</ion-card-title>
+      <ion-card-title>Monthly Income</ion-card-title>
     </ion-card-header>
-    <ion-card-content> Card Content </ion-card-content>
+    <ion-card-content> ₹ {{monthlyincome}} </ion-card-content>
+  </ion-card>
+
+  <ion-card class="monthlyexpense">
+    <ion-card-header>
+      <ion-card-title>Monthly Expense</ion-card-title>
+    </ion-card-header>
+    <ion-card-content> ₹ {{monthlyexpense}} </ion-card-content>
   </ion-card>
 </ion-content>

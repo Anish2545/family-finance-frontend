@@ -1,3 +1,5 @@
+<div id="sign-in-button"></div>
+
 <ion-content class="ion-padding" *ngIf="isEnterMobileNo">
   <div class="container">
     <!-- <h1 class="heading" style="color: #959595; margin-top: 20px;">
@@ -36,8 +38,8 @@
 
           <ion-item lines="none" class="ion-padding-top ion-no-border">
             <div style="display: flex; justify-content: center; width: 100%; padding-top:0px">
-              <ion-button shape="round" expand="block" class="button" (click)="logIn(); openOTPVerification()"
-                type="ngSubmit" *ngIf="form.valid">Verify OTP</ion-button>
+              <ion-button shape="round" expand="block" class="button" (click)="onSubmitLoginForm()" type="ngSubmit"
+              (click)="logIn()" *ngIf="form.valid">Verify OTP</ion-button>
               <ion-button shape="round" *ngIf="!form.valid" expand="block" class="button" type="ngSubmit"
                 [disabled]="!form.valid">Verify
                 OTP</ion-button>
@@ -72,6 +74,4 @@
         (click)="verifyOTP()" type="ngSubmit">Verify</ion-button>
     </div>
   </div>
-</ion-content>
-
-<div id="sign-in-button"></div>
+</ion-content> 

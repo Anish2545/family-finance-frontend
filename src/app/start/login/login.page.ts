@@ -80,9 +80,10 @@ export class LoginPage implements OnInit {
   }
 
   onSubmitLoginForm() {
+    
     if (this.form.valid) {
       this.otpVerificationMode = 'mobile';
-
+      
       let preFixMobileNo =
         '+91' + (this.form.value['phone'] ?? '').toString();
       firebase
@@ -108,7 +109,6 @@ export class LoginPage implements OnInit {
         });
     }
   }
-
   verifyOTP() {
     console.log(this.otp);
     console.log(this.confirmationResult);
@@ -135,7 +135,6 @@ export class LoginPage implements OnInit {
       }
     });
   }
-
 
   resendOTP() {
     this.isReloadBtnLoading = true;
@@ -191,7 +190,8 @@ export class LoginPage implements OnInit {
     toast.present();
   }
 
-  logIn() {
+  logIn() { 
+    this.openOTPVerification();
     if (!this.form.invalid) {
       this.form.markAllAsTouched();
       return;
