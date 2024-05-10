@@ -41,7 +41,8 @@ ion-content {
         ion-card-content {
             color: #ffffff;
             font-size: 23px;
-            font-weight: bold;        }
+            font-weight: bold;
+        }
     }
 
     .income {
@@ -69,6 +70,27 @@ ion-content {
 
         ion-card-content {
             color: #000000
+        }
+    }
+
+    .monthlybalance {
+        ion-card-content {
+            font-size: 23px;
+            font-weight: bold;
+        }
+    }
+
+    .monthlyincome  {
+        ion-card-content {
+            font-size: 23px;
+            font-weight: bold;
+        }
+    }
+
+    .monthlyexpense {
+        ion-card-content {
+            font-size: 23px;
+            font-weight: bold;
         }
     }
 }

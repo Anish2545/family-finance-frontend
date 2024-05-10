@@ -48,9 +48,10 @@ const routes: Routes = [
       {
         path: 'split-travel-list',
         loadChildren: () => import('./split-travel-list/split-travel-list.module').then( m => m.SplitTravelListPageModule)
-      }
+      },
     ]
   },
+
 ];
 
 

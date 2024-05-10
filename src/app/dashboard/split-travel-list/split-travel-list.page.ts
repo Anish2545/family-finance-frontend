@@ -86,6 +86,10 @@ export class SplitTravelListPage implements OnInit {
   ngOnInit() {
   }
 
+  openSplitPage(tripId: any,title:any){
+    this.router.navigate(['/dashboard/split-travel-list/split-amount', tripId,title])
+  }
+
   fetchTrips() {
     let reqBody = {
       first: 0,

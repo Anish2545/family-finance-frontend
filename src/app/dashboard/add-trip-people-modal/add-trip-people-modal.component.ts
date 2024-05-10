@@ -26,6 +26,7 @@ export class AddTripPeopleModalComponent implements OnInit {
 
   initializeForm() {
     this.addPeopleForm = this.formBuilder.group({
+      name:['',Validators.required],
       phone: ['', Validators.required],
     });
   }
@@ -43,6 +44,7 @@ export class AddTripPeopleModalComponent implements OnInit {
   confirm() {
     if (this.addPeopleForm && this.addPeopleForm.valid) {
       let reqBody = {
+        name: this.addPeopleForm.get('name')?.value,
         phone: this.addPeopleForm.get('phone')?.value,
         tripId: this.tripId,
       };

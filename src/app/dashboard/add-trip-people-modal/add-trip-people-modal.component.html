@@ -11,8 +11,17 @@
 <ion-content class="ion-padding">
   <form [formGroup]="addPeopleForm" id="peopleForm">
     <ion-item>
+      <ion-input formControlName="name" type="text" label="Name" labelPlacement="stacked"
+        placeholder="Name"></ion-input>
+    </ion-item>
+    <ion-item lines="none"
+      *ngIf="addPeopleForm.get('name')?.invalid && addPeopleForm.get('name')?.touched">
+      <ion-text color="danger">Name is required.</ion-text>
+    </ion-item>
+    <br><br><br>
+    <ion-item>
       <ion-input formControlName="phone" type="tel" label="Mobile No." labelPlacement="stacked"
-        placeholder="Mobile No."></ion-input>
+        placeholder="Mobile No." minlength="10" maxlength="10"></ion-input>
     </ion-item>
     <ion-item lines="none"
       *ngIf="addPeopleForm.get('phone')?.invalid && addPeopleForm.get('phone')?.touched">

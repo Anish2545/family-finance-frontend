@@ -19,13 +19,27 @@
     </ion-item>
 
     <ion-card-content>
-      <ion-item slot="start">
+      <ion-item >
         {{ t.date }}
       </ion-item>
 
-      <ion-item slot="end">
-       Total Expense :  {{ t.totalAmount }}
-      </ion-item>
+      <div class="ion-padding">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="auto" offset="-1">
+              <ion-item lines="none">
+               Total Expense :  {{ t.totalAmount }}
+              </ion-item>
+            </ion-col>
+
+            <ion-col size="auto">
+              <ion-item lines="none" class="split">
+                <ion-button size="default" class="splitbtn" (click)="openSplitPage(t._id,t.title)">SPLIT</ion-button>
+               </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
     </ion-card-content>
   </ion-card>
 
