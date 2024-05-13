@@ -10,13 +10,16 @@
         <p class="details">Type : {{ t.expenseCategory }}</p>
         <p class="details">Category : <span *ngIf=" t.isIncome == 'income'" style="color: green;">Income</span> <span
             *ngIf=" t.isIncome == 'expense'" style="color: #f55555;">Expense</span> </p>
-
       </ion-label>
       <ion-button class="delete custom-size" color="danger" (click)="deleteTransaction(t._id)">
         <ion-icon name="trash"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>
+  <div *ngIf="histroyCount == 0">
+    <img src="../../../assets/no-histroy.png" alt="">
+    <h3 style="text-align: center;">No History</h3>
+  </div>
 
   <!-- <ion-infinite-scroll (ionInfinite)="loadMoreTransactions($event)">
     <ion-infinite-scroll-content loadingSpinner="bubbles"

@@ -12,7 +12,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class TransactionHistoryPage implements OnInit {
   form: FormGroup; transactions: any;
-  ; // Assuming transactions are stored in this array
+  histroyCount: any;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private utilService: UtilService,
     private toastController: ToastController) {
@@ -31,6 +31,7 @@ export class TransactionHistoryPage implements OnInit {
   fetchTransactions() {
     this.utilService.callPostApi('', "transaction/transactionlist").subscribe(async result => {
       if (result.flag) {
+        this.histroyCount = result.count;
         this.transactions = result.data;
       }
     }
