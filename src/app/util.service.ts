@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ToastController, LoadingController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -10,7 +11,9 @@ import { environment } from 'src/environments/environment';
 export class UtilService {
   serverBaseurl = environment.serverBaseurl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    private toastController: ToastController,
+    private loadingCtrl: LoadingController) { }
 
   Validators: any;
 
@@ -73,5 +76,39 @@ export class UtilService {
       'Content-Type': '*',
     };
     return this.http.get<any>(imageUrl, { headers });
+  }
+
+  async toastError(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      position: 'bottom',
+      color: 'danger'
+      //cssClass: 'warning-toast',
+    });
+    toast.present();
+  }
+
+  async toastSuccess(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      position: 'bottom',
+      color: 'success'
+      //cssClass: 'green-toast',
+    });
+    toast.present();
+  }
+
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading...'
+    });
+
+    loading.present();
+  }
+
+  async hideLoading() {
+    this.loadingCtrl.dismiss();
   }
 }

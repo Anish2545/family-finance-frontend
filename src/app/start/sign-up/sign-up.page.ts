@@ -2,11 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UtilService } from 'src/app/util.service';
-import { ToastController } from '@ionic/angular';
 import firebase from 'firebase/compat/app';
 import { environment } from 'src/environments/environment';
 import { getAuth } from 'firebase/auth';
-import { CountdownComponent } from 'ngx-countdown';
 import { Plugins } from '@capacitor/core';
 
 const app = firebase.initializeApp(environment.firebaseConfig);
@@ -27,8 +25,7 @@ export class SignUpPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private utilService: UtilService,
-    private toastController: ToastController // Inject ToastController
+    private utilService: UtilService
   ) { }
 
   otpVerificationMode: string = 'mobile';
@@ -44,20 +41,13 @@ export class SignUpPage implements OnInit {
   isVerifyOTPLoading: boolean = false;
   isGoLoginLoading: boolean = false;
   OTP_Verify = false;
-  disabled: boolean = true;
+  disabledVerifyBtn: boolean = true;
   otp: string[] = [];
   closeResult = '';
   otpForm = new FormGroup({});
   user: any;
 
   routerlink = '';
-
-  isAllowToResendOTP: boolean = false;
-  countDownConfig = { leftTime: 300, format: 'mm:ss' };
-  @ViewChild('cd', { static: false }) private countdown:
-    | CountdownComponent
-    | undefined;
-
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -69,12 +59,12 @@ export class SignUpPage implements OnInit {
       'sign-in-button',
       { size: 'invisible' }
     );
-    
+
   }
 
   signUp() {
     if (this.form.invalid) {
-      this.form.markAllAsTouched();
+      this.utilService.validateAllFormFields(this.form);
       return;
     }
 
@@ -82,10 +72,9 @@ export class SignUpPage implements OnInit {
       mobileNo: this.form.controls["phone"].value
     };
 
-    this.utilService.callFormPostApi(reqBody, "user/check-mobile-no").subscribe(result => {
+    this.utilService.showLoading();
+    this.utilService.callFormPostApi(reqBody, "user/check-signup-mobile-no").subscribe(result => {
       if (result.flag) {
-        this.successtoast();
-        
         let preFixMobileNo =
           '+91' + (this.form.value['phone'] ?? '').toString();
         firebase
@@ -98,6 +87,7 @@ export class SignUpPage implements OnInit {
             this.preFixMobileNo = preFixMobileNo.toString();
             this.confirmationResult = confirmationResult;
             this.isOTPVerification = true;
+            this.utilService.hideLoading();
           })
           .catch((error) => {
             if (error) {
@@ -105,101 +95,52 @@ export class SignUpPage implements OnInit {
             } else {
               console.log('ALL GOOD.');
             }
+            this.utilService.hideLoading();
           });
-
       } else {
-        this.warningtoast(); // Call the presentToast method to display the toast
+        this.utilService.toastError("This number already exists");
+        this.utilService.hideLoading();
       }
     });
-
-
   }
 
- 
   verifyOTP() {
-    this.isVerifyOTPLoading = true;
-    this.confirmationResult.confirm(this.otp).then((user: any) => {
-      if (user.user.phoneNumber == this.preFixMobileNo) {
-        let reqBody = {
-          id_token: user.user.multiFactor.user.accessToken,
-          name: this.form.controls["name"].value,
-          mobileNo: this.form.controls["phone"].value,
-          emailId: this.form.controls["email"].value
-        };
-        this.utilService.callFormPostApi(reqBody, "user/signup").subscribe(async result => {
-          if (result.flag) {
-            this.successtoast();
-            await Preferences.set({ key: 'access_token', value: result.data.token });
-            this.router.navigate(['/start/otpverify2']);
-          } else {
-            this.warningtoast(); // Call the presentToast method to display the toast
-          }
-        })
-      } else {
-        this.isVerifyOTPLoading = false;
-        this.routerlink = '/';
-      }
-    });
-  }
-
-
-  resendOTP() {
-    this.isReloadBtnLoading = true;
-    firebase
-      .auth()
-      .signInWithPhoneNumber(this.preFixMobileNo, this.recaptchaVerifier)
-      .then((confirmationResult) => {
-        this.confirmationResult = confirmationResult;
-        this.isReloadBtnLoading = false;
-      })
-      .catch((err) => {
-        this.isReloadBtnLoading = false;
+    if (!this.otp || this.otp.length < 6) {
+      this.utilService.toastError("Enter OTP");
+      return;
+    } else {
+      this.utilService.showLoading();
+      this.confirmationResult.confirm(this.otp).then((user: any) => {
+        if (user.user.phoneNumber == this.preFixMobileNo) {
+          let reqBody = {
+            id_token: user.user.multiFactor.user.accessToken,
+            name: this.form.controls["name"].value,
+            mobileNo: this.form.controls["phone"].value,
+            emailId: this.form.controls["email"].value
+          };
+          this.utilService.callFormPostApi(reqBody, "user/signup").subscribe(async result => {
+            if (result.flag) {
+              this.utilService.toastSuccess("Successfully Registered");
+              await Preferences.set({ key: 'access_token', value: result.data.token });
+              this.router.navigate(['/start/otpverify2']);
+            } else {
+              this.utilService.toastError("");
+            }
+            this.utilService.hideLoading();
+          })
+        } else {
+          this.utilService.hideLoading();
+        }
       });
+    }
   }
 
   onOtpChange(otp: any) {
     this.otp = otp;
     if (otp.length === 6) {
-      this.disabled = false;
+      this.disabledVerifyBtn = false;
+    } else {
+      this.disabledVerifyBtn = true;
     }
-  }
-
-  onTimerFinished(e: any) {
-    if (e['action'] == 'start') {
-      this.isAllowToResendOTP = false;
-    } else if (e['action'] == 'done') {
-      this.isAllowToResendOTP = true;
-    }
-  }
-
-
-  changeType() {
-    this.type = !this.type;
-  }
-
-  async warningtoast() {
-    const toast = await this.toastController.create({
-      message: 'This number already exists',
-      duration: 2000,
-      position: 'bottom',
-      //cssClass: 'warning-toast',
-      color: 'danger'
-    });
-    toast.present();
-  }
-  async successtoast() {
-    const toast = await this.toastController.create({
-      message: 'Successfully Registered',
-      duration: 2000,
-      position: 'bottom',
-      // cssClass: 'green-toast',
-      color: 'success'
-    });
-    toast.present();
-  }
-
-
-  async handleGetStarted() {
-    this.router.navigateByUrl('/start/otpverify2');
   }
 }

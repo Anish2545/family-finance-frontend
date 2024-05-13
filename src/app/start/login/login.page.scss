@@ -70,8 +70,15 @@ ion-item-group .button {
 
 :host ::ng-deep {
   .otp-input {
-    width: 40px !important;
+    width: 50px !important;
     font-size: 20px !important;
-    height: 40px !important;
+    height: 50px !important;
   }
+}
+
+.mobile-no-label {
+  text-align: center;
+  width: 100%;
+  display: block;
+  padding: 0.5rem 1rem 1rem 1rem;
 }

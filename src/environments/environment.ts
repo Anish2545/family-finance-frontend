@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  serverURL: 'http://192.168.1.12:4000/',
-  serverBaseurl: 'http://192.168.1.12:4000/',
+  serverURL: 'http://localhost:4000/',
+  serverBaseurl: 'http://localhost:4000/',
   firebaseConfig: {
     apiKey: "AIzaSyAUoMQ--0U7waa7FlwIMTOZy_GYPv4d4Qc",
     authDomain: "family-expense-tracker-4d9fb.firebaseapp.com",

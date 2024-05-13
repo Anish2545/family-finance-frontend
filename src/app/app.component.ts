@@ -21,7 +21,7 @@ export class AppComponent {
 
   async ngOnInit() {
     const preferences = await Preferences.get({ key: 'isSecondTime' });
-    const preferences2 = await Preferences.get({ key: 'isSecondTime' });
+    const preferences2 = await Preferences.get({ key: 'access_token' });
 
     const isSecondTime = preferences.value;
     const access_token = preferences2.value;
