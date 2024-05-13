@@ -1,9 +1,9 @@
-<ion-header class="ion-no-border">
-  <ion-title mode="md">Budget Alert</ion-title>
+<ion-header class="header-with-border">
+  <ion-title mode="md" class="tile-center">Budget Alert</ion-title>
 </ion-header>
 <ion-content [fullscreen]="true">
   <div class="image">
-    <img src="assets\budgetalert.svg" alt="Family Finance Image" >
+    <img src="assets\budgetalert.svg" alt="Family Finance Image">
   </div>
 </ion-content>
 <ion-footer class="ion-no-border">
@@ -31,7 +31,8 @@
           </div>
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="budget" label="Budget Amount" label-placement="floating" fill="outline" placeholder="Budget Amount" type="number"></ion-input>
+              <ion-input formControlName="budget" label="Budget Amount" label-placement="floating" fill="outline"
+                placeholder="Budget Amount" type="number"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('budget')?.valid && form.get('budget')?.touched">
               <ion-text class="error" *ngIf="form.get('budget')?.hasError('required')" color="danger">
@@ -50,4 +51,3 @@
     </ion-list>
   </ion-row>
 </ion-footer>
-

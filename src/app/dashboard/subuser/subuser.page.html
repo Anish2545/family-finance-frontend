@@ -14,7 +14,8 @@
         <form [formGroup]="form">
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="name" label="Full Name" label-placement="floating" fill="outline" placeholder="Full Name" type="text"></ion-input>
+              <ion-input formControlName="name" label="Full Name" label-placement="floating" fill="outline"
+                placeholder="Full Name" type="text"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('name')?.valid && form.get('name')?.touched">
               <ion-text class="error" *ngIf="form.get('name')?.hasError('required')" color="danger">
@@ -24,18 +25,22 @@
           </div>
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="relation" label="Relation to User" label-placement="floating" fill="outline" placeholder="Relation to User" type="text"></ion-input>
+              <ion-input formControlName="relation" label="Relation to User" label-placement="floating" fill="outline"
+                placeholder="Relation to User" type="text"></ion-input>
             </ion-item>
           </div>
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="phone" label="Mobile No" label-placement="floating" fill="outline" placeholder="Mobile No" type="tel" minlength="10" maxlength="10"></ion-input>
+              <ion-input formControlName="phone" label="Mobile No" label-placement="floating" fill="outline"
+                placeholder="Mobile No" type="tel" minlength="10" maxlength="10"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('phone')?.valid && form.get('phone')?.touched">
               <ion-text class="error" *ngIf="form.get('phone')?.hasError('required')" color="danger">
                 * Please enter the Mobile Number
               </ion-text>
-              <ion-text class="error" *ngIf="form.get('phone')?.hasError('minlength') && !form.get('phone')?.hasError('required')" color="danger">
+              <ion-text class="error"
+                *ngIf="form.get('phone')?.hasError('minlength') && !form.get('phone')?.hasError('required')"
+                color="danger">
                 * Please enter a valid Mobile Number
               </ion-text>
             </ion-text>
@@ -43,7 +48,7 @@
         </form>
         <ion-item lines="none" class="ion-padding-top">
           <div style="display: flex; justify-content: center; width: 100%;color:#7ED957">
-            <ion-button shape="round" expand="block" class="button"  (click)="submitForm()">SAVE</ion-button>
+            <ion-button shape="round" expand="block" class="button" (click)="submitForm()">SAVE</ion-button>
           </div>
         </ion-item>
       </ion-item-group>

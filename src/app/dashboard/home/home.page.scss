@@ -1,16 +1,17 @@
 ion-header {
   background-color: #ffffff;
+  padding-bottom: 1vh;
+  border-bottom: 1px solid #979797;
 
   ion-toolbar {
     ion-title {
       padding-top: 2vh;
       font-weight: bold;
-      font-size: 30px;
-      font-variant: linear;
+      font-size: 22px;
     }
 
     ion-buttons {
-      padding-top: 2vh;
+      padding-top: 1vh;
 
       ion-thumbnail {
         background-color: #d9d9d9;
@@ -20,7 +21,7 @@ ion-header {
         justify-content: center;
 
         ion-icon {
-          font-size: 1.5rem;
+          font-size: 1.7rem;
         }
       }
     }

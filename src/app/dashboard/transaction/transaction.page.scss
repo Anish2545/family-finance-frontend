@@ -1,9 +1,25 @@
 ion-title {
-  padding-top: 3vh;
-  padding-bottom: 3vh;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
   font-weight: bold;
   font-size: 20px;
   background-color: #ffffff;
+  border-bottom: 1px solid #979797;
+}
+
+.card-style {
+  margin: 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  padding: 2px;
+}
+
+.details {
+  font-size: 15px;
+  color: #454545;
+  padding: 1px;
 }
 
 .header-with-border {
@@ -17,13 +33,12 @@ ion-title {
   height: 100%; /* Vertically center the title */
 }
 
-
 .custom-size {
   height: 40px;
   width: 40px;
 }
 
-.trash{
+.trash {
   height: 20px;
   width: 20px;
 }
@@ -70,5 +85,3 @@ ion-item {
   padding-left: 5%;
   color: #7ed957;
 }
-
-
