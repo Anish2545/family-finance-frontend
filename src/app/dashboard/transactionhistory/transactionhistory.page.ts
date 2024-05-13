@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UtilService } from 'src/app/util.service';
 import { ToastController } from '@ionic/angular';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-transaction-history',
@@ -15,7 +16,10 @@ export class TransactionHistoryPage implements OnInit {
   histroyCount: any;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private utilService: UtilService,
-    private toastController: ToastController) {
+    private toastController: ToastController, private authService: AuthService) {
+    debugger
+    let Info = this.authService.getUserId;
+    console.log(Info);
     this.form = this.formBuilder.group({
     });
   }

@@ -35,7 +35,7 @@ export class AuthService {
 
   async getUserId() {
     const token = await Preferences.get({ key: 'u' });
-
+    console.log(token);
     return token.value ? token.value : '';
   }
 
