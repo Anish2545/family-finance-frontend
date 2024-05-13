@@ -14,7 +14,7 @@ export class HomePage implements OnInit {
   income: any;
   balance: any;
   isSelectMonth: any = new Date().toLocaleString('default', { month: 'long' });
-  isSelectYear: any = new Date().getFullYear();
+  isSelectYear: any = new Date().getFullYear().toString();
 
   constructor(private utilService: UtilService) { }
 

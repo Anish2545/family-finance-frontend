@@ -13,7 +13,7 @@ const { Preferences } = Plugins;
 })
 export class ProfilePage implements OnInit {
   form: any; // Declare form as a FormGroup
-
+  userName: string = "";
 
   constructor(private formBuilder: FormBuilder, private router: Router, private utilService: UtilService,
     private toastController: ToastController) {
@@ -49,11 +49,9 @@ export class ProfilePage implements OnInit {
   }
 
   loadUserData() {
-    // Simulate fetching user data from API
-    // Replace this with actual API call to fetch user data
     this.utilService.callGetApi("user/profile").subscribe(async result => {
       if (result.flag) {
-        //this.router.navigate(['/lace/add-purchase', resp.data.purchaseId]);
+        this.userName = result.data.name;
       }
       this.form.patchValue({
         name: result.data.name,
@@ -75,14 +73,13 @@ export class ProfilePage implements OnInit {
         occupation: this.form.controls["profession"].value,
         gender: this.form.controls["gender"].value,
         emailId: this.form.controls["email"].value,
-
-
       };
 
 
       this.utilService.callPostApi(reqBody, "user/updateprofile").subscribe(async result => {
         if (result.flag) {
           this.successtoast();
+          this.loadUserData();
           //this.router.navigate(['/lace/add-purchase', resp.data.purchaseId]);
         }
 

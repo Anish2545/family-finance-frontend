@@ -33,7 +33,7 @@
       <ion-card-title class="card-title">Select Month & Year</ion-card-title>
     </ion-card-header>
     <ion-grid>
-      <ion-row>
+      <!-- <ion-row>
         <ion-col>
           <ion-list>
             <ion-item>
@@ -62,6 +62,40 @@
                 <ion-select-option value="2022">2022</ion-select-option>
                 <ion-select-option value="2023">2023</ion-select-option>
                 <ion-select-option value="2024">2024</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row> -->
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-select aria-label="Month" [(ngModel)]="isSelectMonth" (ionChange)="ongetMY($event)">
+                <ion-select-option value="January">January</ion-select-option>
+                <ion-select-option value="February">February</ion-select-option>
+                <ion-select-option value="March">March</ion-select-option>
+                <ion-select-option value="April">April</ion-select-option>
+                <ion-select-option value="May">May</ion-select-option>
+                <ion-select-option value="June">June</ion-select-option>
+                <ion-select-option value="July">July</ion-select-option>
+                <ion-select-option value="August">August</ion-select-option>
+                <ion-select-option value="September">September</ion-select-option>
+                <ion-select-option value="October">October</ion-select-option>
+                <ion-select-option value="November">November</ion-select-option>
+                <ion-select-option value="December">December</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-select aria-label="Year" [(ngModel)]="isSelectYear" (ionChange)="ongetY($event)">
+                <ion-select-option value="2023">2023</ion-select-option>
+                <ion-select-option value="2024">2024</ion-select-option>
+                <ion-select-option value="2025">2025</ion-select-option>
+                <ion-select-option value="2026">2026</ion-select-option>
               </ion-select>
             </ion-item>
           </ion-list>

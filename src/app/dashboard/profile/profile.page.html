@@ -1,19 +1,20 @@
 <ion-content [fullscreen]="true">
   <div class="ion-text-center heading">
-    <img src="assets\abstract-user-flat-4.svg" alt="Family Finance Image" style="width: 88px; height: auto;">
+    <img src="assets/man.png" alt="Family Finance Image" style="width: 100px; height: auto;"><br>
+    <span class="profile-title">{{userName}}</span>
   </div>
 </ion-content>
 <ion-footer class="ion-no-border">
+
   <ion-row>
     <ion-list background="transparent" lines="full">
-      <ion-list-header class="ion-margin">
-        <ion-label>Sign Up</ion-label>
-      </ion-list-header>
       <ion-item-group class="ion-margin-horizontal ion-margin-bottom">
+        <h5 style="padding: 13px 12px 0px 11px;"> Profile Update</h5>
         <form [formGroup]="form">
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="name" label="Full Name" label-placement="floating" fill="solid" placeholder="Full Name" type="text"></ion-input>
+              <ion-input formControlName="name" label="Full Name" label-placement="floating" fill="solid"
+                placeholder="Full Name" type="text"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('name')?.valid && form.get('name')?.touched">
               <ion-text class="error" *ngIf="form.get('name')?.hasError('required')" color="danger">
@@ -24,13 +25,16 @@
 
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="phone" label="Mobile No" label-placement="floating" fill="solid" placeholder="Mobile No" type="tel" minlength="10" maxlength="10"></ion-input>
+              <ion-input formControlName="phone" label="Mobile No" label-placement="floating" fill="solid"
+                placeholder="Mobile No" type="tel" minlength="10" maxlength="10"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('phone')?.valid && form.get('phone')?.touched">
               <ion-text class="error" *ngIf="form.get('phone')?.hasError('required')" color="danger">
                 * Please enter the Mobile Number
               </ion-text>
-              <ion-text class="error" *ngIf="form.get('phone')?.hasError('minlength') && !form.get('phone')?.hasError('required')" color="danger">
+              <ion-text class="error"
+                *ngIf="form.get('phone')?.hasError('minlength') && !form.get('phone')?.hasError('required')"
+                color="danger">
                 * Please enter a valid Mobile Number
               </ion-text>
             </ion-text>
@@ -38,7 +42,8 @@
 
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="profession" label="Professional/Occupation" label-placement="floating" fill="solid" placeholder="Professional/Occupation" type="text"></ion-input>
+              <ion-input formControlName="profession" label="Professional/Occupation" label-placement="floating"
+                fill="solid" placeholder="Professional/Occupation" type="text"></ion-input>
             </ion-item>
             <!-- Add validation if needed -->
           </div>
@@ -56,31 +61,47 @@
 
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="email" label="Email ID" label-placement="floating" fill="solid" placeholder="Email ID" type="email"></ion-input>
+              <ion-input formControlName="email" label="Email ID" label-placement="floating" fill="solid"
+                placeholder="Email ID" type="email"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('email')?.valid && form.get('email')?.touched">
               <ion-text class="error" *ngIf="form.get('email')?.hasError('required')" color="danger">
                 * Please enter your Email Address
               </ion-text>
-              <ion-text class="error" *ngIf="form.get('email')?.hasError('email') && !form.get('email')?.hasError('required')" color="danger">
+              <ion-text class="error"
+                *ngIf="form.get('email')?.hasError('email') && !form.get('email')?.hasError('required')" color="danger">
                 * Please enter a proper Email Address
               </ion-text>
             </ion-text>
           </div>
-
-          <!-- Verify OTP Button -->
-          <ion-item lines="none" class="ion-padding-top">
-            <div style="display: flex; justify-content: center; width: 100%;">
-              <ion-button shape="round" expand="block" class="button" (click)="updateprofile()">SAVE</ion-button>
-            </div>
-          </ion-item>
-
-          <!-- Logout Button -->
-          <ion-item lines="none" class="ion-padding-top">
-            <div style="display: flex; justify-content: center; width: 100%;">
-              <ion-button shape="round" expand="block" class="button" (click)="logout()">LOGOUT</ion-button>
-            </div>
-          </ion-item>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-button shape="round" expand="block" class="button">Save</ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button shape="round" expand="block" class="buttonL" (click)="logout()">Logout</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <!-- <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-item lines="none" class="ion-padding-top">
+                  <div style="display: flex; justify-content: center; width: 100%;">
+                    <ion-button shape="round" expand="block" class="button" (click)="updateprofile()">SAVE</ion-button>
+                  </div>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item lines="none" class="ion-padding-top">
+                  <div style="display: flex; justify-content: center; width: 100%;">
+                    <ion-button shape="round" expand="block" class="button" (click)="logout()">LOGOUT</ion-button>
+                  </div>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid> -->
         </form>
       </ion-item-group>
     </ion-list>
