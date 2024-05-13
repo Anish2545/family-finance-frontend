@@ -1,35 +1,29 @@
 <ion-header class="header-with-border">
   <ion-title mode="md" class="tile-center">Transaction History</ion-title>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <!-- Main Content Area -->
   <ion-list>
-    <ion-item *ngFor="let t of transactions; let index">
+    <ion-item class="card-style" *ngFor="let t of transactions; let index">
       <ion-label>
-        <h2>{{ t.transactionDate }}</h2>
-        <p>Amount : {{ t.amount }}</p>
-        <p>Type : {{ t.expenseCategory }}</p>
-        <p>Category : {{ t.isIncome }}</p>
+        <h2>{{ t.transactionDate | date: 'dd - MMM - yyyy' }}</h2>
+        <p class="details">Amount : {{ t.amount }}</p>
+        <p class="details">Type : {{ t.expenseCategory }}</p>
+        <p class="details">Category : {{ t.isIncome }}</p>
       </ion-label>
-
       <ion-button class="delete custom-size" color="danger" (click)="deleteTransaction(t._id)">
         <ion-icon name="trash"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>
 
-  <!-- Infinite Scroll -->
-  <ion-infinite-scroll (ionInfinite)="loadMoreTransactions($event)">
-    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+  <!-- <ion-infinite-scroll (ionInfinite)="loadMoreTransactions($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles"
+      loadingText="Loading more data..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
 
-  <!-- Fab Button -->
-<ion-fab vertical="bottom" horizontal="end" slot="fixed" class="ion-padding">
-  <ion-fab-button color="success" (click)="navigateToTransactionEntry()">
-    <ion-icon name="add"></ion-icon>
-  </ion-fab-button>
-</ion-fab>
-
-
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="ion-padding">
+    <ion-fab-button color="success" (click)="navigateToTransactionEntry()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

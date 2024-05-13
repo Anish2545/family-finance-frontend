@@ -1,8 +1,16 @@
-ion-card-title {
-    font-weight: bold;
+ion-title {
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #979797;
 }
 
+ion-card-title {
+  font-weight: bold;
+}
 .splitbtn {
-    --background: #7ed957;
-    --border-radius: 10px ;
+  --background: #7ed957;
+  --border-radius: 10px;
 }

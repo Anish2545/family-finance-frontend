@@ -18,24 +18,17 @@ export class TransactionHistoryPage implements OnInit {
     private toastController: ToastController) {
     this.form = this.formBuilder.group({
     });
-    // Assuming you fetch transactions from somewhere (e.g., a service) and assign them to the transactions array
     this.fetchTransactions();
   }
-  
+
   ngOnInit(): void {
-    
+
   }
 
   fetchTransactions() {
-    let reqBody = {
-      first: 0,
-      rows: 10
-
-    };
-    this.utilService.callPostApi(reqBody, "transaction/transactionlist").subscribe(async result => {
+    this.utilService.callPostApi('', "transaction/transactionlist").subscribe(async result => {
       if (result.flag) {
         this.transactions = result.data;
-        //this.router.navigate(['/dashboard/transactionhistory']);
       }
 
     }

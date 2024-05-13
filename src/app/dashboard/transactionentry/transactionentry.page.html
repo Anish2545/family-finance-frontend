@@ -14,17 +14,18 @@
       <ion-item-group class="ion-margin-horizontal ion-margin-bottom">
         <form [formGroup]="form">
           <div class="ion-margin-vertical">
-                <ion-radio-group formControlName="category">
-                  <ion-item>
-                    <ion-radio slot="start" value="income">Income</ion-radio>
-                    <ion-radio slot="start" value="expense">Expense</ion-radio>
-                  </ion-item>
-                </ion-radio-group>
+            <ion-radio-group formControlName="category">
+              <ion-item>
+                <ion-radio slot="start" value="income">Income</ion-radio>
+                <ion-radio slot="start" value="expense">Expense</ion-radio>
+              </ion-item>
+            </ion-radio-group>
           </div>
 
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="transactionDate" label="Date of Transaction" label-placement="floating" fill="outline" placeholder="Date of Transaction" type="date" ></ion-input>
+              <ion-input formControlName="transactionDate" label="Date of Transaction" label-placement="floating"
+                fill="outline" placeholder="Date of Transaction" type="date"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('transactionDate')?.valid && form.get('transactionDate')?.touched">
               <ion-text class="error" *ngIf="form.get('transactionDate')?.hasError('required')" color="danger">
@@ -35,7 +36,8 @@
 
           <div class="ion-margin-vertical">
             <ion-item>
-              <ion-input formControlName="amount" label="Amount" label-placement="floating" fill="outline" placeholder="Amount" type="number" ></ion-input>
+              <ion-input formControlName="amount" label="Amount" label-placement="floating" fill="outline"
+                placeholder="Amount" type="number"></ion-input>
             </ion-item>
             <ion-text *ngIf="!form.get('amount')?.valid && form.get('amount')?.touched">
               <ion-text class="error" *ngIf="form.get('amount')?.hasError('required')" color="danger">
@@ -45,7 +47,8 @@
           </div>
 
           <div class="ion-margin-vertical">
-            <ion-select formControlName="expensecategory" label="Category" label-placement="floating" fill="outline" placeholder="Category" *ngIf="form.get('category')?.value !== 'income'">
+            <ion-select formControlName="expensecategory" label="Category" label-placement="floating" fill="outline"
+              placeholder="Category" *ngIf="form.get('category')?.value !== 'income'">
               <ion-select-option value="food">Food</ion-select-option>
               <ion-select-option value="groceries">Groceries</ion-select-option>
               <ion-select-option value="healthcare">Healthcare</ion-select-option>
@@ -61,14 +64,15 @@
               <ion-select-option value="bills">Bills</ion-select-option>
             </ion-select>
 
-            <ion-select formControlName="expensecategory" label="Category" label-placement="floating" fill="outline" placeholder="Category" *ngIf="form.get('category')?.value === 'income'" [disabled]="true">
+            <ion-select formControlName="expensecategory" label="Category" label-placement="floating" fill="outline"
+              placeholder="Category" *ngIf="form.get('category')?.value === 'income'" [disabled]="true">
               <ion-select-option value="income">Income</ion-select-option>
               <!-- Add other income categories here if needed -->
             </ion-select>
             <!-- You may add validation if needed -->
           </div>
 
-          
+
 
           <ion-item lines="none" class="ion-padding-top">
             <div style="display: flex; justify-content: center; width: 100%;">
