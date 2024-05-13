@@ -1,96 +1,121 @@
 ion-header {
-    background-color: #ffffff;
+  background-color: #ffffff;
 
-    ion-toolbar {
-        ion-title {
-            padding-top: 2vh;
-            font-weight: bold;
-            font-size: 30px;
-            font-variant: linear;
-        }
-
-        ion-buttons {
-            padding-top: 2vh;
-
-            ion-thumbnail {
-                background-color: #d9d9d9;
-                --border-radius: 10px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                ion-icon {
-                    font-size: 1.5rem;
-                }
-            }
-        }
+  ion-toolbar {
+    ion-title {
+      padding-top: 2vh;
+      font-weight: bold;
+      font-size: 30px;
+      font-variant: linear;
     }
+
+    ion-buttons {
+      padding-top: 2vh;
+
+      ion-thumbnail {
+        background-color: #d9d9d9;
+        --border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        ion-icon {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+.head-card {
+  padding-bottom: 0px !important;
+}
+
+.card-title {
+  font-size: 19px;
+  letter-spacing: 1px;
+  color: #535353;
+  font-weight: 500;
+}
+
+.card-cont {
+  font-size: 19px;
+  font-weight: bold;
 }
 
 ion-content {
-    .balance {
-        background-color: #595959;
-        width: auto;
-        height: auto;
-        border-radius: 25px;
+  .balance {
+    background-color: #595959;
+    width: auto;
+    height: auto;
+    border-radius: 15px;
 
-        ion-card-title {
-            color: #ffffff;
-        }
-
-        ion-card-content {
-            color: #ffffff;
-            font-size: 23px;
-            font-weight: bold;
-        }
+    ion-card-title {
+      color: #ffffff;
+      margin-bottom: -10px;
+      font-size: 21px;
+      letter-spacing: 1px;
     }
 
-    .income {
-        background-color: #d9d9d9;
-        width: auto;
-        height: 100px;
+    ion-card-content {
+      color: #ffffff;
+      font-size: 19px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      padding-bottom: 10px;
+    }
+  }
 
-        ion-card-title {
-            color: #000000
-        }
+  .income {
+    background-color: #d9d9d9;
+    width: auto;
+    height: 100px;
 
-        ion-card-content {
-            color: #000000
-        }
+    ion-card-title {
+      color: #000000;
     }
 
-    .expense {
-        background-color: #d9d9d9;
-        width: auto;
-        height: 100px;
+    ion-card-content {
+      color: #000000;
+    }
+  }
 
-        ion-card-title {
-            color: #000000
-        }
+  .expense {
+    background-color: #d9d9d9;
+    width: auto;
+    height: 100px;
 
-        ion-card-content {
-            color: #000000
-        }
+    ion-card-title {
+      color: #000000;
     }
 
-    .monthlybalance {
-        ion-card-content {
-            font-size: 23px;
-            font-weight: bold;
-        }
+    ion-card-content {
+      color: #000000;
     }
+  }
 
-    .monthlyincome  {
-        ion-card-content {
-            font-size: 23px;
-            font-weight: bold;
-        }
+  .monthlybalance {
+    ion-card-content {
+      font-size: 19px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      color: green;
     }
+  }
 
-    .monthlyexpense {
-        ion-card-content {
-            font-size: 23px;
-            font-weight: bold;
-        }
+  .monthlyincome {
+    ion-card-content {
+      font-size: 23px;
+      font-weight: bold;
     }
+  }
+
+  .monthlyexpense {
+    ion-card-content {
+      font-size: 23px;
+      font-weight: bold;
+    }
+  }
 }

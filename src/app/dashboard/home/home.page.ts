@@ -13,12 +13,14 @@ export class HomePage implements OnInit {
   expense: any;
   income: any;
   balance: any;
+  isSelectMonth: any = new Date().toLocaleString('default', { month: 'long' });
+  isSelectYear: any = new Date().getFullYear();
 
   constructor(private utilService: UtilService) { }
 
   ngOnInit() {
-    // this.totalIncome();
     this.overallBalance();
+    this.monthlyBalance();
   }
 
   overallBalance() {
@@ -30,7 +32,6 @@ export class HomePage implements OnInit {
   }
 
   monthlyBalance() {
-    debugger
     if (this.isSelectMonth && this.isSelectYear) {
       let reqbody = {
         month: this.isSelectMonth,
@@ -62,12 +63,10 @@ export class HomePage implements OnInit {
   //   })
   // }
 
-  isSelectMonth: any;
-  isSelectYear: any;
+
 
   ongetMY(event: any) {
     this.isSelectMonth = event.detail.value;
-    console.log(this.isSelectMonth);
     this.monthlyBalance();
   }
 
