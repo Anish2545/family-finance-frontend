@@ -14,7 +14,7 @@ export class TransactionentryPage {
   constructor(private formBuilder: FormBuilder, private utilService: UtilService,
     private toastController: ToastController, private router: Router) {
     this.form = this.formBuilder.group({
-      category: [null,Validators.required], // category: income/expense
+      category: [null, Validators.required], // category: income/expense
       transactionDate: [null, Validators.required], // Date of Transaction
       amount: [null, Validators.required], // Amount
       expensecategory: [{ value: 'income', disabled: true }, Validators.required], // Title of Transaction
@@ -45,12 +45,9 @@ export class TransactionentryPage {
           this.successtoast();
           this.router.navigate(['dashboard/transactionhistory']);
         } else {
-          this.warningtoast(); // Call the presentToast method to display the toast
+          this.warningtoast();
         }
       })
-      // Here you can handle the form submission, for example, sending it to a backend server
-      console.log(this.form.value);
-      // Reset the form after submission if needed
       this.form.reset();
     } else {
       // Mark all fields as touched to display validation messages

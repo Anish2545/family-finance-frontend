@@ -18,11 +18,14 @@ export class TransactionHistoryPage implements OnInit {
     private toastController: ToastController) {
     this.form = this.formBuilder.group({
     });
-    this.fetchTransactions();
+  }
+
+  async ionViewWillEnter() {
+    await this.fetchTransactions();
   }
 
   ngOnInit(): void {
-
+    this.fetchTransactions();
   }
 
   fetchTransactions() {
@@ -30,7 +33,6 @@ export class TransactionHistoryPage implements OnInit {
       if (result.flag) {
         this.transactions = result.data;
       }
-
     }
     )
 
@@ -59,6 +61,7 @@ export class TransactionHistoryPage implements OnInit {
     this.utilService.callDeleteApi(`transaction/transactionlist/${transactionId}`).subscribe(async result => {
       if (result.flag) {
         this.warningtoast();
+        this.fetchTransactions();
       }
     }
     )

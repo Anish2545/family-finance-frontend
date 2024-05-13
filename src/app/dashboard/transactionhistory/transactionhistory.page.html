@@ -5,10 +5,12 @@
   <ion-list>
     <ion-item class="card-style" *ngFor="let t of transactions; let index">
       <ion-label>
-        <h2>{{ t.transactionDate | date: 'dd - MMM - yyyy' }}</h2>
+        <h2>{{ t.transactionDate | date: 'dd MMM yyyy' }}</h2>
         <p class="details">Amount : {{ t.amount }}</p>
         <p class="details">Type : {{ t.expenseCategory }}</p>
-        <p class="details">Category : {{ t.isIncome }}</p>
+        <p class="details">Category : <span *ngIf=" t.isIncome == 'income'" style="color: green;">Income</span> <span
+            *ngIf=" t.isIncome == 'expense'" style="color: #f55555;">Expense</span> </p>
+
       </ion-label>
       <ion-button class="delete custom-size" color="danger" (click)="deleteTransaction(t._id)">
         <ion-icon name="trash"></ion-icon>
