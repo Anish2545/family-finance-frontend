@@ -15,8 +15,8 @@
       <ion-list>
         <ion-item *ngFor="let t of persons; let index">
           <ion-label>
-            <h2>{{t.name}}</h2>
-            <p>{{ t.phone }}</p>
+            <h2>{{t.user.name}}</h2>
+            <p>{{ t.user.phone }}</p>
           </ion-label>
 
           <ion-label slot="end">
@@ -25,45 +25,32 @@
         </ion-item>
       </ion-list>
     </ion-card-content>
+
+    <ion-button class="save" (click)="splitAmount()" size="default" [strong]="true" fill="solid">Make Split</ion-button>
   </ion-card>
 
-  <ion-card class="ion-padding">
+  <ion-card class="ion-padding" *ngIf="settlementList && settlementList.length > 0">
     <ion-card-header>
       <ion-card-title>Settlement</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
-        <ion-item >
+        <ion-item *ngFor="let s of settlementList; let index">
           <ion-label>
-            <h2>user2</h2>
-            <p>8787890090</p>
+            <h2>{{s.from.name}}</h2>
+            <p>{{s.from.mobileNo}}</p>
           </ion-label>
 
           <ion-label class="ion-padding">
-            <h2> ₹ 200 </h2>
+            <h2> ₹ {{s.amount | number : '1.2-2'}} </h2>
           </ion-label>
 
           <ion-label slot="end">
-            <h2>  Anish </h2>
-            <p> 8787890090</p>
+            <h2>{{s.to.name}}</h2>
+            <p>{{s.to.mobileNo}}</p>
           </ion-label>
         </ion-item>
 
-        <ion-item >
-          <ion-label>
-            <h2>user1</h2>
-            <p>9894891323</p>
-          </ion-label>
-
-          <ion-label class="ion-padding">
-            <h2> ₹ 100 </h2>
-          </ion-label>
-
-          <ion-label slot="end">
-            <h2>  admin </h2>
-            <p> 1234567890</p>
-          </ion-label>
-        </ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>

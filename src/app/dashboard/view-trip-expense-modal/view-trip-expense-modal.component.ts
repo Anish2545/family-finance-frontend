@@ -13,15 +13,15 @@ import { AddTripPeopleModalComponent } from '../add-trip-people-modal/add-trip-p
   styleUrls: ['./view-trip-expense-modal.component.scss'],
 })
 export class ViewTripExpenseModalComponent implements OnInit {
-  
-  @Input() title:any;
+
+  @Input() title: any;
   @Input() tripId: any;
   tripexpense: any;
   trip: any;
   addExpenseForm: any;
   addPeopleForm: any;
 
-  constructor(private modalController: ModalController,private toastController: ToastController, private utilService: UtilService, private formBuilder: FormBuilder) {
+  constructor(private modalController: ModalController, private toastController: ToastController, private utilService: UtilService, private formBuilder: FormBuilder) {
     this.addExpenseForm = this.formBuilder.group({
       amount: ['', Validators.required],
       description: ['', Validators.required]
@@ -64,12 +64,11 @@ export class ViewTripExpenseModalComponent implements OnInit {
     console.log(this.tripId);
     if (this.tripId) {
       this.utilService.callGetApi(`tripexpenseamount/gettriplistexpense/${this.tripId}`).subscribe(async result => {
-        if (!result.data || result.data.length === 0){
+        if (!result.data || result.data.length === 0) {
           this.warningtoast();
         }
-        else{
+        else {
           this.tripexpense = result.data;
-          this.successtoast();
         }
       })
     }
@@ -98,7 +97,7 @@ export class ViewTripExpenseModalComponent implements OnInit {
   }
 
   deleteExpense(tripexpenseId: any) {
-    this.utilService.callDeleteApi(`tripexpenseamount/gettriplistexpense/${tripexpenseId}`).subscribe(async result => {
+    this.utilService.callDeleteApi(`tripexpenseamount/gettriplistexpense/${tripexpenseId}/${this.tripId}`).subscribe(async result => {
       if (result.flag) {
         this.deletetoast();
       }
